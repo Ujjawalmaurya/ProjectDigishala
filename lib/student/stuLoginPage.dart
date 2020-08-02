@@ -157,18 +157,3 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
   }
 }
 
-// _sendToNextScreen() {
-//   if (_key.currentState.validate()) {
-//     _key.currentState.save();
-//     Navigator.push(
-//       context,
-//       MaterialPageRoute(
-//         builder: (context) => HomePage(
-//           username: username,
-//           pass: pass,
-//         ),
-//       ),
-//     );
-//   }
-//   setState(() {});
-// }
