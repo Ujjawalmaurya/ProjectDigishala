@@ -82,6 +82,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                   setState(() {
                                     email = input;
                                   });
+                                  print(this.email);
                                 },
                               ),
                             ),
@@ -100,8 +101,9 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                     InputDecoration(labelText: "Password"),
                                 onSaved: (input) {
                                   setState(() {
-                                    email = input;
+                                    pass = input;
                                   });
+                                  print(this.pass);
                                 },
                               ),
                             ),
@@ -113,18 +115,24 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                               width: 220.0,
                               child: RaisedButton(
                                 onPressed: () async {
-                                  // print(email);
-                                  // print(pass);
-                                  // try {
-                                  //   final user =
-                                  //       await _auth.signInWithEmailAndPassword(
-                                  //           email: email, password: pass);
-                                  //   if (user != null) {
-                                  // Navigator.pushNamed(context, StudentZone.id);
-                                  //   }
-                                  // } catch (e) {
-                                  //   print(e);
-                                  // }
+                                  if (_key.currentState.validate()) {
+                                    _key.currentState.save();
+
+                                    try {
+                                      AuthResult result = await _auth
+                                          .signInWithEmailAndPassword(
+                                              email: this.email,
+                                              password: this.pass);
+                                      final FirebaseUser user = result.user;
+                                      print(user);
+                                      if (user != null) {
+                                        Navigator.pushNamed(
+                                            context, StudentZone.id);
+                                      }
+                                    } catch (e) {
+                                      print(e.message);
+                                    }
+                                  }
                                 },
                                 color: Colors.redAccent,
                                 splashColor: Colors.deepPurpleAccent,
@@ -156,4 +164,3 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
     );
   }
 }
-
