@@ -27,13 +27,11 @@ class _HomePageState extends State<HomePage> {
     final FirebaseUser user = await _firebaseAuth.currentUser();
 
     if (user != null) {
-      print("not working");
       Navigator.pushReplacementNamed(
         context,
         StudentZone.id,
       );
     } else {
-      print("Not Logged before");
       Navigator.pushReplacementNamed(
         context,
         StudentLoginScreen.id,
@@ -46,7 +44,6 @@ class _HomePageState extends State<HomePage> {
     final FirebaseUser user = await _firebaseAuth.currentUser();
 
     if (user != null) {
-      print("not working");
       Navigator.pushReplacementNamed(
         context,
         StudentZone.id,
