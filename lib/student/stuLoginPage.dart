@@ -21,6 +21,17 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
   String email, pass;
 
   @override
+  void initState() {
+    currentUser();
+  }
+
+  currentUser() async {
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    final FirebaseUser user = await _firebaseAuth.currentUser();
+    print(user.email);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -126,7 +137,8 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                       final FirebaseUser user = result.user;
                                       print(user);
                                       if (user != null) {
-                                        Navigator.pushNamed(
+                                        currentUser();
+                                        Navigator.pushReplacementNamed(
                                             context, StudentZone.id);
                                       }
                                     } catch (e) {
