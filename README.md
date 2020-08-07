@@ -15,9 +15,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-## Most helped
-
-[mFaizk](https://github.com/mfaizk)(Senior Developer), [Ujjawal](https://github.com/ujjawalmaurya) (Junior Developer)
+### Show some Love
 
 ## License
 null_ 
