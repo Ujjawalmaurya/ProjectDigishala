@@ -1,4 +1,4 @@
-# NCA - DigiShala
+# NCA - DigiShala [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
 
 DigiShala is an application(uner Development{alpha-stage}) by which students can get their Lectures at home online, able to perform tests and get notices from school.
 
@@ -16,9 +16,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ### Show some Love by Contributing
-
-#### null
-
 
 ## License
 null_ 
