@@ -2,15 +2,14 @@
 
 # NCA - DigiShala
 
-DigiShala is an application(uner Development{alpha-stage}) by which students can get their Lectures at home online, able to perform tests and get notices from school.
+DigiShala is an application by which students can get their Lectures at home online and will able get notices from school.
 
 ## Installation
 
-Use [PlayStore](https://play.google.com/store) to install DigiShala.
+Goto [PlayStore](https://play.google.com/store) (after uploading) to install DigiShala App.
 
 ## Usage
-You can get Login info from School then Login to your app and enjoy.
-
+You can get Login info from Developers to get in the app.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
