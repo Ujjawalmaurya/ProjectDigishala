@@ -48,12 +48,12 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                     tag: 'logo',
                     child: CircleAvatar(
                       backgroundColor: Colors.deepPurple,
-                      radius: 90.0,
+                      radius: 75.0,
                       backgroundImage: kLogoAsset,
                     ),
                   ),
                   SizedBox(
-                    height: 85.0,
+                    height: 65.0,
                   ),
                   SingleChildScrollView(
                     child: Form(
@@ -80,7 +80,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                     InputDecoration(labelText: "Username"),
                                 onSaved: (input) {
                                   setState(() {
-                                    email = input;
+                                    email = input + '@um.um';
                                   });
                                   print(this.email);
                                 },
@@ -110,46 +110,87 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                             Padding(
                               padding: EdgeInsets.all(10.0),
                             ),
-                            Container(
-                              height: 50.0,
-                              width: 220.0,
-                              child: RaisedButton(
-                                onPressed: () async {
-                                  if (_key.currentState.validate()) {
-                                    _key.currentState.save();
+                            Column(
+                              children: [
+                                ////===============////
+                                //Get in button
+                                ////===============////
+                                Container(
+                                  height: 50.0,
+                                  width: 220.0,
+                                  child: RaisedButton(
+                                    onPressed: () async {
+                                      if (_key.currentState.validate()) {
+                                        _key.currentState.save();
 
-                                    try {
-                                      AuthResult result = await _auth
-                                          .signInWithEmailAndPassword(
-                                              email: this.email,
-                                              password: this.pass);
-                                      final FirebaseUser user = result.user;
-                                      print(user);
-                                      if (user != null) {
-                                        Navigator.pushNamed(
-                                            context, StudentZone.id);
+                                        try {
+                                          AuthResult result = await _auth
+                                              .signInWithEmailAndPassword(
+                                                  email: this.email,
+                                                  password: this.pass);
+                                          final FirebaseUser user = result.user;
+                                          print(user);
+                                          if (user != null) {
+                                            Navigator.pushNamed(
+                                                context, StudentZone.id);
+                                          }
+                                        } catch (e) {
+                                          print(e.message);
+                                        }
                                       }
-                                    } catch (e) {
-                                      print(e.message);
-                                    }
-                                  }
-                                },
-                                color: Colors.redAccent,
-                                splashColor: Colors.deepPurpleAccent,
-                                child: Text(
-                                  "Get in",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.white,
-                                    fontFamily: 'Pacifico',
+                                    },
+                                    color: Colors.redAccent,
+                                    splashColor: Colors.deepPurpleAccent,
+                                    child: Text(
+                                      "Get in",
+                                      style: TextStyle(
+                                        fontSize: 20.0,
+                                        color: Colors.white,
+                                        fontFamily: 'Pacifico',
+                                      ),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                    ),
                                   ),
                                 ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25.0),
+                                SizedBox(
+                                  height: 20.0,
+                                  child: Text(
+                                    'or',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                ////===========================////
+                                //Sign in with Google Button
+                                ////===========================////
+                                Container(
+                                  height: 37.0,
+                                  width: 300.0,
+                                  child: RaisedButton(
+                                    onPressed: () {},
+                                    color: Colors.purpleAccent,
+                                    splashColor: Colors.deepPurpleAccent,
+                                    child: Text(
+                                      "Sign-in with GOOGLE",
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Colors.white,
+                                        // fontFamily: 'Pacifico',
+                                      ),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(padding: EdgeInsets.all(15.0))
+                            Padding(padding: EdgeInsets.all(20.0))
                           ],
                         ),
                       ),
