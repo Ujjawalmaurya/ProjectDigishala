@@ -80,7 +80,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                     InputDecoration(labelText: "Username"),
                                 onSaved: (input) {
                                   setState(() {
-                                    email = input + '@um.um';
+                                    email = input + '@test.app';
                                   });
                                   print(this.email);
                                 },
