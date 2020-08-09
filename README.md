@@ -1,16 +1,22 @@
-# digishala
+<img src="icon.png" align="right" />
 
-A new Flutter project.
+# NCA - DigiShala
 
-## Getting Started
+DigiShala is an application by which students can get their Lectures at home online and will able get notices from school.
 
-This project is a starting point for a Flutter application.
+## Installation
 
-A few resources to get you started if this is your first Flutter project:
+Goto [PlayStore](https://play.google.com/store) (after uploading) to install DigiShala App.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Usage
+You can get Login info from Developers to get in the app.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+### Show some Love by Contributing
+
+## License
+null_ 
