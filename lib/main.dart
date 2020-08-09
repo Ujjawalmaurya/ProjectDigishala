@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //
       //
-      //
       initialRoute: HomePage.id,
       routes: {
         HomePage.id: (context) => HomePage(),
@@ -28,7 +27,6 @@ class MyApp extends StatelessWidget {
         StudentZone.id: (context) => StudentZone(),
         Videos.id: (context) => Videos(),
       },
-      //
       //
       //
       //
