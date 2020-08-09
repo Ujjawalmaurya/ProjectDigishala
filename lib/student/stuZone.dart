@@ -16,6 +16,9 @@ class _StudentZoneState extends State<StudentZone> {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
+          /////===========================
+          ///logo with hero animation
+          ////============================
           Hero(
             tag: 'logo',
             child: Image(
@@ -23,7 +26,7 @@ class _StudentZoneState extends State<StudentZone> {
             ),
           ),
         ],
-        backgroundColor: kThemeColor,
+        backgroundColor: kThemeColor, //value is in constants file
         title: Text(
           "Subjects",
           style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
@@ -35,7 +38,7 @@ class _StudentZoneState extends State<StudentZone> {
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: kThemeColor),
+              decoration: BoxDecoration(color: kThemeColor), //#constants
               accountName: Text("Student\'s.name"),
               accountEmail: Text("Student\'s.email@nca"),
               currentAccountPicture: CircleAvatar(
@@ -110,6 +113,9 @@ class _StudentZoneState extends State<StudentZone> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    //////=====================
+                    ///subjects ===============
+                    ////=======================
                     SubjectContainer(
                       title: 'Hindi',
                       onPressed: () {},
@@ -186,6 +192,9 @@ class _StudentZoneState extends State<StudentZone> {
   }
 }
 
+////================
+///custom widget ===
+////================
 class SubjectContainer extends StatelessWidget {
   SubjectContainer({
     @required this.title,

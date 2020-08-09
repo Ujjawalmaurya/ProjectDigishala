@@ -17,6 +17,9 @@ class _AboutUsState extends State<AboutUs> {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
+          ////==============================
+          ///logo with hero animation
+          ////==============================
           Hero(
             tag: 'logo',
             child: Image(
@@ -28,16 +31,20 @@ class _AboutUsState extends State<AboutUs> {
         title: Text("About Us"),
         leading: Icon(Icons.account_box),
       ),
+      ////=======
+      ///Drawer==
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text("Ujjawal"),
-              accountEmail: Text("ujjawalmauryaum@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/mascot.png"),
-              ),
-            ),
+            // UserAccountsDrawerHeader(
+            //   accountName: Text("Username"),
+            //   accountEmail: Text("usename@email.com"),
+            //   currentAccountPicture: CircleAvatar(
+            //     backgroundImage: AssetImage("assets/mascot.png"),
+            //   ),
+            // ),
+            ////================
+            //tiles=============
             ListTile(
               title: Text("Admission Procedure"),
               leading: FaIcon(FontAwesomeIcons.plus),

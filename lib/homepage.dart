@@ -29,6 +29,9 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             SizedBox(height: 25.0),
             Container(
+              ////=========================
+              ///logo with hero animation
+              ////=========================
               child: Hero(
                 tag: 'logo',
                 child: CircleAvatar(
@@ -40,6 +43,9 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 120.0,
             ),
+            ////========================
+            ///Button to login Screen
+            ////========================
             Container(
               // margin: EdgeInsets.all(10.0),
               child: Expanded(
@@ -53,6 +59,7 @@ class _HomePageState extends State<HomePage> {
                             padding: EdgeInsets.all(5.0),
                             elevation: 25.0,
                             onPressed: () {
+                              ///Navigation
                               Navigator.pushNamed(
                                 context,
                                 StudentLoginScreen.id,
@@ -82,10 +89,14 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       children: <Widget>[
                         Expanded(
+                          ////===============================
+                          ///button for about us page
+                          ////===============================
                           child: RaisedButton(
                             padding: EdgeInsets.all(5.0),
                             elevation: 25.0,
                             onPressed: () {
+                              //Navigation
                               Navigator.pushNamed(context, AboutUs.id);
                             },
                             child: Text(

@@ -44,6 +44,9 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                   SizedBox(
                     height: 25.0,
                   ),
+                  ////==================
+                  // Logo with animation
+                  ////==================
                   Hero(
                     tag: 'logo',
                     child: CircleAvatar(
@@ -68,6 +71,9 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                             Padding(
                               padding: EdgeInsets.all(0.0),
                             ),
+                            ////========
+                            //Username
+                            ////========
                             ListTile(
                               leading: FaIcon(FontAwesomeIcons.userAlt),
                               title: TextFormField(
@@ -86,6 +92,9 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                 },
                               ),
                             ),
+                            ////==============
+                            ///Password
+                            ////==============
                             ListTile(
                               leading: FaIcon(FontAwesomeIcons.lock),
                               title: TextFormField(
@@ -113,7 +122,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                             Column(
                               children: [
                                 ////===============////
-                                //Get in button
+                                //Get-in button
                                 ////===============////
                                 Container(
                                   height: 50.0,
@@ -131,6 +140,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                           final FirebaseUser user = result.user;
                                           print(user);
                                           if (user != null) {
+                                            //Navigation
                                             Navigator.pushNamed(
                                                 context, StudentZone.id);
                                           }
@@ -172,7 +182,6 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                   height: 37.0,
                                   width: 300.0,
                                   child: RaisedButton(
-                                    onPressed: () {},
                                     color: Colors.purpleAccent,
                                     splashColor: Colors.deepPurpleAccent,
                                     child: Text(
@@ -183,6 +192,10 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                         // fontFamily: 'Pacifico',
                                       ),
                                     ),
+                                    onPressed: () {
+                                      //
+                                      //
+                                    },
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
