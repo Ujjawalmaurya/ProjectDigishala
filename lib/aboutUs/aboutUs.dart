@@ -2,7 +2,6 @@ import 'package:digishala/aboutUs/admission.dart';
 import 'package:digishala/constants.dart';
 import 'package:digishala/homepage.dart';
 import 'package:digishala/student/stuLoginPage.dart';
-import 'package:digishala/teacher/teacherLoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -57,8 +56,6 @@ class _AboutUsState extends State<AboutUs> {
               leading: FaIcon(FontAwesomeIcons.arrowAltCircleRight),
               onTap: () =>
                   Navigator.of(context).popAndPushNamed(StudentLoginScreen.id),
-              onLongPress: () => Navigator.of(context)
-                  .popAndPushNamed(TeacherAuthentication.id),
             ),
             Divider(),
             ListTile(

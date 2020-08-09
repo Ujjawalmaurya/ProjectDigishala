@@ -4,8 +4,6 @@ import 'package:digishala/homepage.dart';
 import 'package:digishala/student/stuLoginPage.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:digishala/student/videos.dart';
-import 'package:digishala/teacher/teacherLoginPage.dart';
-import 'package:digishala/teacher/teachersZone.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -23,12 +21,9 @@ class MyApp extends StatelessWidget {
         StudentLoginScreen.id: (context) => StudentLoginScreen(),
         AboutUs.id: (context) => AboutUs(),
         AdmissionProcedure.id: (context) => AdmissionProcedure(),
-        TeacherAuthentication.id: (context) => TeacherAuthentication(),
-        TeacherZone.id: (context) => TeacherZone(),
         StudentZone.id: (context) => StudentZone(),
         Videos.id: (context) => Videos(),
       },
-      //
       //
       //
       //
