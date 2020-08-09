@@ -6,3 +6,5 @@ firebase_auth_web=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.d
 firebase_core=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.5/
 firebase_core_web=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/
 flutter_inappwebview=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-4.0.0+4/
+google_sign_in=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.1/
+google_sign_in_web=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.9.1+1/
