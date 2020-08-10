@@ -1,6 +1,7 @@
 import 'package:digishala/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:flutter/services.dart';
 
 class Videos extends StatefulWidget {
   static const String id = 'videos';
@@ -17,10 +18,25 @@ class _VideosState extends State<Videos> {
   void initState() {
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(vidURL),
-      flags: YoutubePlayerFlags(autoPlay: false),
+      flags: YoutubePlayerFlags(autoPlay: true),
     );
 
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+  }
+
+  @override
+  dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
   }
 
   @override
@@ -32,36 +48,10 @@ class _VideosState extends State<Videos> {
         //   backgroundColor: kThemeColor,
         // ),
         body: Container(
-      decoration: kContainerThemeDecoration,
-      height: double.infinity,
-      width: double.infinity,
-      child: SingleChildScrollView(
-        controller: ScrollController(),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withAlpha(190),
-          ),
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Demo Video',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.blue),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Card(
-                  shadowColor: Colors.blueGrey,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0)),
-                  margin: EdgeInsets.all(5.0),
-                  child: YoutubePlayer(controller: _controller),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      alignment: Alignment.center,
+      height: MediaQuery.of(context).size.height * 1,
+      width: MediaQuery.of(context).size.width * 1,
+      child: YoutubePlayer(controller: _controller),
     ));
   }
 }
