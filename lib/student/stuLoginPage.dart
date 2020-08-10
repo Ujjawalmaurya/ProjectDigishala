@@ -33,7 +33,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
       print(user);
       if (user != null) {
         //Navigation
-        Navigator.pushNamed(context, StudentZone.id);
+        Navigator.pushReplacementNamed(context, StudentZone.id);
       }
     } catch (e) {
       setState(() {
@@ -69,7 +69,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
     print(user.email);
     if (user != null) {
       //Navigation
-      Navigator.pushNamed(context, StudentZone.id);
+      Navigator.pushReplacementNamed(context, StudentZone.id);
     }
   }
 

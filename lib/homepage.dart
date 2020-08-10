@@ -4,6 +4,7 @@ import 'package:digishala/student/stuZone.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'HomePage';
@@ -76,6 +77,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     loggedInOrNot();
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }
 
   @override
@@ -120,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                             elevation: 25.0,
                             onPressed: () {
                               ///Navigation
-                              Navigator.pushNamed(
+                              Navigator.pushReplacementNamed(
                                 context,
                                 StudentLoginScreen.id,
                               );
