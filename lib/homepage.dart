@@ -1,7 +1,9 @@
 import 'package:digishala/aboutUs/aboutUs.dart';
 import 'package:digishala/student/stuLoginPage.dart';
+import 'package:digishala/student/stuZone.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'HomePage';
@@ -18,6 +20,64 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String errorMsg;
+
+  //LogIn Checker
+  loggedInOrNot() async {
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    try {
+      if (user.email != null) {
+        Navigator.pushReplacementNamed(context, StudentZone.id);
+      } else {
+        print('not logged');
+      }
+    } catch (e) {
+      setState(() {
+        errorMsg = e.message;
+      });
+      errorDialog();
+    }
+  }
+
+  //Error dialog box
+  errorDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          elevation: 10.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          title: Text(
+            'Error',
+            style: TextStyle(color: Colors.red),
+          ),
+          content: Text(errorMsg),
+          actions: [
+            FlatButton(
+              color: Colors.red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                side: BorderSide(color: Colors.red, width: 2),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Ok"),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loggedInOrNot();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

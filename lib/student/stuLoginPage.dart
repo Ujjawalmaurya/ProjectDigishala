@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../homepage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class StudentLoginScreen extends StatefulWidget {
   static const String id = 'stuLoginPage';
@@ -14,11 +15,98 @@ class StudentLoginScreen extends StatefulWidget {
 
 class _StudentLoginScreenState extends State<StudentLoginScreen> {
   GlobalKey<FormState> _key = new GlobalKey();
-
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser user;
   bool _autovalidate = false;
   bool isLoading = false;
-  final _auth = FirebaseAuth.instance;
+
   String email, pass;
+  String errorMsg;
+
+  //SignIn with email Fxn
+  signIn() async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: this.email, password: this.pass);
+      final FirebaseUser user = result.user;
+      print(user);
+      if (user != null) {
+        //Navigation
+        Navigator.pushNamed(context, StudentZone.id);
+      }
+    } catch (e) {
+      setState(() {
+        errorMsg = e.message;
+      });
+      errorDialog();
+    }
+  }
+
+//signIn with google
+
+  Future<FirebaseUser> handleGoogleSign() async {
+    try {
+      final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+      user = (await _auth.signInWithCredential(credential)).user;
+
+      return user;
+    } catch (e) {
+      setState(() {
+        errorMsg = e.message;
+      });
+      errorDialog();
+    }
+  }
+
+  void googleSignin() async {
+    user = await handleGoogleSign();
+    print(user.email);
+    if (user != null) {
+      //Navigation
+      Navigator.pushNamed(context, StudentZone.id);
+    }
+  }
+
+  errorDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          elevation: 10.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          title: Text(
+            'Error',
+            style: TextStyle(color: Colors.red),
+          ),
+          content: Text(errorMsg),
+          actions: [
+            FlatButton(
+              color: Colors.red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                side: BorderSide(color: Colors.red, width: 2),
+              ),
+              onPressed: () {
+                clearFields();
+                Navigator.of(context).pop();
+              },
+              child: Text("Ok"),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  clearFields() {}
 
   @override
   Widget build(BuildContext context) {
@@ -131,22 +219,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                     onPressed: () async {
                                       if (_key.currentState.validate()) {
                                         _key.currentState.save();
-
-                                        try {
-                                          AuthResult result = await _auth
-                                              .signInWithEmailAndPassword(
-                                                  email: this.email,
-                                                  password: this.pass);
-                                          final FirebaseUser user = result.user;
-                                          print(user);
-                                          if (user != null) {
-                                            //Navigation
-                                            Navigator.pushNamed(
-                                                context, StudentZone.id);
-                                          }
-                                        } catch (e) {
-                                          print(e.message);
-                                        }
+                                        signIn();
                                       }
                                     },
                                     color: Colors.redAccent,
@@ -194,6 +267,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                     ),
                                     onPressed: () {
                                       //
+                                      googleSignin();
                                       //
                                     },
                                     shape: RoundedRectangleBorder(

@@ -1,7 +1,9 @@
+import 'package:digishala/homepage.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class StudentZone extends StatefulWidget {
   static const String id = 'stuZone';
@@ -11,6 +13,11 @@ class StudentZone extends StatefulWidget {
 }
 
 class _StudentZoneState extends State<StudentZone> {
+  signOut() {
+    Navigator.pushReplacementNamed(context, HomePage.id);
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +103,9 @@ class _StudentZoneState extends State<StudentZone> {
                 Icons.call_missed_outgoing,
                 color: kThemeColor,
               ),
-              onTap: () {},
+              onTap: () {
+                signOut();
+              },
             ),
           ],
         ),
