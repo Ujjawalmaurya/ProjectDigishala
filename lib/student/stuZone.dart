@@ -1,5 +1,6 @@
 import 'package:digishala/homepage.dart';
 import 'package:digishala/student/videos.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
@@ -13,10 +14,94 @@ class StudentZone extends StatefulWidget {
   _StudentZoneState createState() => _StudentZoneState();
 }
 
+int studentClass;
+
 class _StudentZoneState extends State<StudentZone> {
   signOut() {
     Navigator.pushReplacementNamed(context, HomePage.id);
     FirebaseAuth.instance.signOut();
+  }
+
+  _showClassDialog() async {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            // backgroundColor: kThemeColor,
+            // scrollable: true,
+            // elevation: 30.0,
+            title: Text(
+              'Select your Class First',
+              style: TextStyle(color: kThemeColor),
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  RaisedButton(
+                    textColor: Colors.white,
+                    child: Text('Class-6'),
+                    onPressed: () {
+                      setState(() {
+                        studentClass = 6;
+                      });
+                      print(studentClass);
+                      Navigator.of(context).pop();
+                    },
+                    color: Colors.pinkAccent,
+                  ),
+                  RaisedButton(
+                    textColor: Colors.white,
+                    child: Text('Class-7'),
+                    onPressed: () {
+                      setState(() {
+                        studentClass = 7;
+                      });
+                      print(studentClass);
+                      Navigator.of(context).pop();
+                    },
+                    color: Colors.pinkAccent,
+                  ),
+                  RaisedButton(
+                    textColor: Colors.white,
+                    child: Text('Class-8'),
+                    onPressed: () {
+                      setState(() {
+                        studentClass = 8;
+                      });
+                      print(studentClass);
+                      Navigator.of(context).pop();
+                    },
+                    color: Colors.pinkAccent,
+                  ),
+                  RaisedButton(
+                    textColor: Colors.white,
+                    child: Text('Class-9'),
+                    onPressed: () {
+                      setState(() {
+                        studentClass = 9;
+                      });
+                      print(studentClass);
+                      Navigator.of(context).pop();
+                    },
+                    color: Colors.pinkAccent,
+                  ),
+                  RaisedButton(
+                    textColor: Colors.white,
+                    child: Text('Class-10'),
+                    onPressed: () {
+                      setState(() {
+                        studentClass = 10;
+                      });
+                      print(studentClass);
+                      Navigator.of(context).pop();
+                    },
+                    color: Colors.pinkAccent,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   @override
@@ -127,8 +212,10 @@ class _StudentZoneState extends State<StudentZone> {
                     ///subjects ===============
                     ////=======================
                     SubjectContainer(
-                      title: 'Hindi',
-                      onPressed: () {},
+                      title: 'ShowDialog',
+                      onPressed: () {
+                        _showClassDialog();
+                      },
                       colour: Colors.redAccent,
                     ),
                     SubjectContainer(
