@@ -1,4 +1,4 @@
-#Mon Aug 10 12:44:01 IST 2020
+#Tue Aug 11 13:56:17 IST 2020
 path.1=classes.dex
 path.0=classes.dex
 renamed.10=classes11.dex
@@ -10,19 +10,19 @@ renamed.5=classes6.dex
 renamed.4=classes5.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
-base.9=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_6.dex
+base.9=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_6.dex
 renamed.1=classes2.dex
-base.8=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_5.dex
+base.8=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_5.dex
 renamed.0=classes.dex
-base.7=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_4.dex
-base.6=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_3.dex
-base.5=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_2.dex
-base.4=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_1.dex
-base.3=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_0.dex
-base.2=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeExtDexDebug/out/classes2.dex
-base.1=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
-base.0=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
-base.10=/home/suneater/Fproject/uj/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_7.dex
+base.7=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_4.dex
+base.6=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_3.dex
+base.5=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_2.dex
+base.4=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_1.dex
+base.3=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_0.dex
+base.2=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeExtDexDebug/out/classes2.dex
+base.1=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
+base.0=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
+base.10=/home/ujjawal/Git/ProjectDigishala/build/app/intermediates/dex/debug/mergeLibDexDebug/out/classes_7.dex
 path.10=classes_7.dex
 path.9=classes_6.dex
 path.8=classes_5.dex
