@@ -1,10 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-cloud_firestore=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.13.7/
-cloud_firestore_web=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.1.1+2/
-firebase_auth=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.16.1/
-firebase_auth_web=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.1.3+1/
-firebase_core=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.5/
-firebase_core_web=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/
-flutter_inappwebview=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-4.0.0+4/
-google_sign_in=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.1/
-google_sign_in_web=/home/ujjawal/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.9.1+1/
+cloud_firestore=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.13.7/
+cloud_firestore_web=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.1.1+2/
+firebase_auth=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.16.1/
+firebase_auth_web=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.1.3+1/
+firebase_core=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.5/
+firebase_core_web=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/
+flutter_inappwebview=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-4.0.0+4/
+google_sign_in=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.1/
+google_sign_in_web=/home/suneater/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.9.1+1/
