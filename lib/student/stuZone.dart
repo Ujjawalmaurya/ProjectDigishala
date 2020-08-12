@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StudentZone extends StatefulWidget {
   static const String id = 'stuZone';
@@ -14,12 +15,35 @@ class StudentZone extends StatefulWidget {
   _StudentZoneState createState() => _StudentZoneState();
 }
 
-int studentClass;
-
 class _StudentZoneState extends State<StudentZone> {
+  int studentClass;
   signOut() {
     Navigator.pushReplacementNamed(context, HomePage.id);
     FirebaseAuth.instance.signOut();
+  }
+
+  Future checkIfClassIsSelectedOrNot() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String selectedClass = prefs.getString('selectedClass') ?? '';
+    print(selectedClass);
+    if (selectedClass == '') {
+      _showClassDialog();
+    } else {
+      print('Class Already Selected');
+      final selectedClass = prefs.getString('selectedClass') ?? '';
+      print(selectedClass);
+    }
+  }
+
+  Future setClass() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String selectedClass = prefs.getString('selectedClass') ?? '';
+    if (selectedClass == '') {
+      prefs.setString("selectedClass", studentClass.toString());
+    } else {
+      await prefs.remove('selectedClass');
+      prefs.setString("selectedClass", studentClass.toString());
+    }
   }
 
   _showClassDialog() async {
@@ -44,8 +68,9 @@ class _StudentZoneState extends State<StudentZone> {
                       setState(() {
                         studentClass = 6;
                       });
-                      print(studentClass);
+
                       Navigator.of(context).pop();
+                      setClass();
                     },
                     color: Colors.pinkAccent,
                   ),
@@ -56,8 +81,8 @@ class _StudentZoneState extends State<StudentZone> {
                       setState(() {
                         studentClass = 7;
                       });
-                      print(studentClass);
                       Navigator.of(context).pop();
+                      setClass();
                     },
                     color: Colors.pinkAccent,
                   ),
@@ -68,8 +93,8 @@ class _StudentZoneState extends State<StudentZone> {
                       setState(() {
                         studentClass = 8;
                       });
-                      print(studentClass);
                       Navigator.of(context).pop();
+                      setClass();
                     },
                     color: Colors.pinkAccent,
                   ),
@@ -80,8 +105,8 @@ class _StudentZoneState extends State<StudentZone> {
                       setState(() {
                         studentClass = 9;
                       });
-                      print(studentClass);
                       Navigator.of(context).pop();
+                      setClass();
                     },
                     color: Colors.pinkAccent,
                   ),
@@ -92,8 +117,8 @@ class _StudentZoneState extends State<StudentZone> {
                       setState(() {
                         studentClass = 10;
                       });
-                      print(studentClass);
                       Navigator.of(context).pop();
+                      setClass();
                     },
                     color: Colors.pinkAccent,
                   ),
@@ -102,6 +127,12 @@ class _StudentZoneState extends State<StudentZone> {
             ),
           );
         });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkIfClassIsSelectedOrNot();
   }
 
   @override
@@ -176,6 +207,17 @@ class _StudentZoneState extends State<StudentZone> {
               onTap: () {},
             ),
             ListTile(
+              title: Text("Change Class"),
+              leading: FaIcon(
+                Icons.note,
+                color: kThemeColor,
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+                _showClassDialog();
+              },
+            ),
+            ListTile(
               title: Text("Provided Notes"),
               leading: FaIcon(
                 Icons.note,
@@ -211,13 +253,6 @@ class _StudentZoneState extends State<StudentZone> {
                     //////=====================
                     ///subjects ===============
                     ////=======================
-                    SubjectContainer(
-                      title: 'ShowDialog',
-                      onPressed: () {
-                        _showClassDialog();
-                      },
-                      colour: Colors.redAccent,
-                    ),
                     SubjectContainer(
                       title: 'English',
                       onPressed: () {},
