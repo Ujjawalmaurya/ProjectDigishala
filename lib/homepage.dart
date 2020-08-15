@@ -22,6 +22,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String errorMsg;
+
+  //LogIn Checker
+  loggedInOrNot() async {
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    try {
+      if (user.email != null) {
+        Navigator.pushReplacementNamed(context, StudentZone.id);
+      } else {
+        print('not logged');
+      }
+    } catch (e) {
+      setState(() {
+        errorMsg = e.message;
+      });
+      errorDialog();
+    }
+  }
+
   //Error dialog box
   errorDialog() {
     showDialog(
@@ -58,6 +76,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    loggedInOrNot();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }

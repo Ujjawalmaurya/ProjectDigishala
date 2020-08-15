@@ -5,7 +5,6 @@ import 'package:digishala/student/stuLoginPage.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,9 +15,7 @@ class MyApp extends StatelessWidget {
       //
       //
       //
-      initialRoute: FirebaseAuth.instance.currentUser() != null
-          ? StudentZone.id
-          : StudentLoginScreen.id,
+      initialRoute: HomePage.id,
       routes: {
         HomePage.id: (context) => HomePage(),
         StudentLoginScreen.id: (context) => StudentLoginScreen(),
