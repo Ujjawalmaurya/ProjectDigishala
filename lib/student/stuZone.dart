@@ -18,8 +18,8 @@ class StudentZone extends StatefulWidget {
 class _StudentZoneState extends State<StudentZone> {
   int studentClass;
   signOut() {
-    FirebaseAuth.instance.signOut();
     Navigator.pushReplacementNamed(context, HomePage.id);
+    FirebaseAuth.instance.signOut();
   }
 
   Future checkIfClassIsSelectedOrNot() async {
@@ -232,7 +232,7 @@ class _StudentZoneState extends State<StudentZone> {
                 color: kThemeColor,
               ),
               onTap: () {
-                signOut();
+                // signOut();
               },
             ),
           ],
