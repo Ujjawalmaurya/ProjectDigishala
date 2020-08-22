@@ -23,63 +23,63 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String errorMsg;
 
-  //LogIn Checker
-  loggedInOrNot() async {
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    try {
-      if (user.email != null) {
-        Navigator.pushReplacementNamed(context, StudentZone.id);
-      } else {
-        print('not logged');
-      }
-    } catch (e) {
-      setState(() {
-        errorMsg = e.message;
-      });
-      errorDialog();
-    }
-  }
+  // //LogIn Checker
+  // loggedInOrNot() async {
+  //   FirebaseUser user = await FirebaseAuth.instance.currentUser();
+  //   try {
+  //     if (user.email != null) {
+  //       Navigator.pushReplacementNamed(context, StudentZone.id);
+  //     } else {
+  //       print('not logged');
+  //     }
+  //   } catch (e) {
+  //     setState(() {
+  //       errorMsg = e.message;
+  //     });
+  //     errorDialog();
+  //   }
+  // }
 
-  //Error dialog box
-  errorDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          title: Text(
-            'Error',
-            style: TextStyle(color: Colors.red),
-          ),
-          content: Text(errorMsg),
-          actions: [
-            FlatButton(
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                side: BorderSide(color: Colors.red, width: 2),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("Ok"),
-            )
-          ],
-        );
-      },
-    );
-  }
+  // //Error dialog box
+  // errorDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         elevation: 10.0,
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(30.0),
+  //         ),
+  //         title: Text(
+  //           'Error',
+  //           style: TextStyle(color: Colors.red),
+  //         ),
+  //         content: Text(errorMsg),
+  //         actions: [
+  //           FlatButton(
+  //             color: Colors.red,
+  //             shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(30.0),
+  //               side: BorderSide(color: Colors.red, width: 2),
+  //             ),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text("Ok"),
+  //           )
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
-  @override
-  void initState() {
-    super.initState();
-    loggedInOrNot();
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   loggedInOrNot();
+  //   SystemChrome.setPreferredOrientations(
+  //       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -88,100 +88,99 @@ class _HomePageState extends State<HomePage> {
       width: double.infinity,
       height: double.infinity,
       child: SafeArea(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 25.0),
-            Container(
-              ////=========================
-              ///logo with hero animation
-              ////=========================
-              child: Hero(
-                tag: 'logo',
-                child: CircleAvatar(
-                    backgroundColor: Colors.deepPurple,
-                    backgroundImage: kLogoAsset,
-                    radius: 120.0),
+        child: Center(
+          child: Form(
+            // key: _key,
+            child: Card(
+              elevation: 15.0,
+              margin: EdgeInsets.only(
+                  // top: 50.0, bottom: 50.0,
+                  left: 20.0,
+                  right: 20.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
               ),
-            ),
-            SizedBox(
-              height: 120.0,
-            ),
-            ////========================
-            ///Button to login Screen
-            ////========================
-            Container(
-              // margin: EdgeInsets.all(10.0),
-              child: Expanded(
+              child: SingleChildScrollView(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: RaisedButton(
-                            padding: EdgeInsets.all(5.0),
-                            elevation: 25.0,
-                            onPressed: () {
-                              ///Navigation
-                              Navigator.pushReplacementNamed(
-                                context,
-                                StudentLoginScreen.id,
-                              );
-                            },
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                fontSize: 22.0,
-                                fontFamily: 'Pacifico',
-                              ),
-                            ),
-                            color: Color(0xFFFF0084),
-                            splashColor: Colors.deepPurpleAccent,
-                            textTheme: ButtonTextTheme.primary,
-                            shape: RoundedRectangleBorder(
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Hero(
+                        tag: 'asset',
+                        child: Container(
+                          decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20.0),
-                            ),
-                          ),
+                              image: DecorationImage(
+                                  image: AssetImage('assets/asset2.jpg'))),
+                          width: 300,
+                          height: 300,
                         ),
-                      ],
+                      ),
                     ),
                     SizedBox(
-                      height: 15.0,
+                      height: 40.0,
                     ),
-                    //Another buttom
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          ////===============================
-                          ///button for about us page
-                          ////===============================
-                          child: RaisedButton(
-                            padding: EdgeInsets.all(5.0),
-                            elevation: 25.0,
-                            onPressed: () {
-                              //Navigation
-                              Navigator.pushNamed(context, AboutUs.id);
-                            },
-                            child: Text(
-                              "Know More? About us",
-                              style: TextStyle(
-                                  fontSize: 22.0, fontFamily: 'Pacifico'),
-                            ),
-                            color: Color(0xFF010A43),
-                            splashColor: Color(0xFFFF2E63),
-                            textTheme: ButtonTextTheme.primary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
+                    Container(
+                      width: 270.0,
+                      child: RaisedButton(
+                        padding: EdgeInsets.all(5.0),
+                        elevation: 20.0,
+                        onPressed: () {
+                          ///Navigation
+                          Navigator.pushReplacementNamed(
+                            context,
+                            StudentLoginScreen.id,
+                          );
+                        },
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            fontFamily: 'Pacifico',
                           ),
                         ),
-                      ],
+                        color: Color(0xFFFF0084),
+                        splashColor: Colors.deepPurpleAccent,
+                        textTheme: ButtonTextTheme.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
                     ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    //Another buttom
+                    Container(
+                      width: 270.0,
+                      child: RaisedButton(
+                        padding: EdgeInsets.all(5.0),
+                        elevation: 25.0,
+                        onPressed: () {
+                          //Navigation
+                          Navigator.pushNamed(context, AboutUs.id);
+                        },
+                        child: Text(
+                          "Know More? About us",
+                          style:
+                              TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),
+                        ),
+                        color: Color(0xFF010A43),
+                        splashColor: Color(0xFFFF2E63),
+                        textTheme: ButtonTextTheme.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    )
                   ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

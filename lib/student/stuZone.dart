@@ -225,6 +225,7 @@ class _StudentZoneState extends State<StudentZone> {
               ),
               onTap: () {},
             ),
+            Divider(),
             ListTile(
               title: Text("Logout"),
               leading: FaIcon(
