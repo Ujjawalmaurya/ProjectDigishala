@@ -131,8 +131,8 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
               elevation: 20.0,
               margin: EdgeInsets.only(
                   // top: 70.0, bottom: 70.0,
-                  left: 15.0,
-                  right: 15.0),
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  right: MediaQuery.of(context).size.width * 0.05),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
@@ -149,13 +149,11 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                 borderRadius: BorderRadius.circular(20.0),
                                 image: DecorationImage(
                                     image: AssetImage('assets/asset3.jpg'))),
-                            width: 300,
-                            height: 240),
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: MediaQuery.of(context).size.width * 0.70),
                       ),
-
                       SizedBox(
-                        height: 25.0,
-                      ),
+                          height: MediaQuery.of(context).size.height * 0.005),
                       //==========
                       //Username
                       ////========
@@ -199,10 +197,12 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                 });
                                 print(this.pass);
                               })),
-                      Padding(padding: EdgeInsets.all(10.0)),
+                      Padding(
+                          padding: EdgeInsets.all(
+                              MediaQuery.of(context).size.height * 0.02)),
                       Container(
                           height: 50.0,
-                          width: 220.0,
+                          width: MediaQuery.of(context).size.width * 0.65,
                           /////////////////////////////////////////////////////
                           ///===================Get-IN Button=======///////////
                           /////////////////////////////////////////////////////
@@ -222,7 +222,9 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                       fontFamily: 'Pacifico')),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25.0)))),
-                      Padding(padding: EdgeInsets.all(20.0)),
+                      Padding(
+                          padding: EdgeInsets.all(
+                              MediaQuery.of(context).size.height * 0.035)),
                     ],
                   ),
                 ),

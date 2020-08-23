@@ -95,8 +95,8 @@ class _HomePageState extends State<HomePage> {
               elevation: 15.0,
               margin: EdgeInsets.only(
                   // top: 50.0, bottom: 50.0,
-                  left: 20.0,
-                  right: 20.0),
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  right: MediaQuery.of(context).size.width * 0.05),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
               ),
@@ -112,18 +112,21 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(20.0),
                               image: DecorationImage(
                                   image: AssetImage('assets/asset2.jpg'))),
-                          width: 300,
-                          height: 300,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          //mediaquerry.of(context).size.width==== this will take full width
+                          //mediaquerry.of(context).size.width * 0.5(50%)==== this will take width in percent
+
+                          height: MediaQuery.of(context).size.width * 0.9,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 40.0,
+                      height: MediaQuery.of(context).size.height * 0.06,
                     ),
                     Container(
-                      width: 270.0,
+                      width: MediaQuery.of(context).size.width * 0.76,
                       child: RaisedButton(
-                        padding: EdgeInsets.all(5.0),
+                        padding: EdgeInsets.all(6.0),
                         elevation: 20.0,
                         onPressed: () {
                           ///Navigation
@@ -148,13 +151,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20.0,
+                      height: MediaQuery.of(context).size.height * 0.032,
                     ),
                     //Another buttom
                     Container(
-                      width: 270.0,
+                      width: MediaQuery.of(context).size.width * 0.76,
                       child: RaisedButton(
-                        padding: EdgeInsets.all(5.0),
+                        padding: EdgeInsets.all(6.0),
                         elevation: 25.0,
                         onPressed: () {
                           //Navigation
@@ -174,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: MediaQuery.of(context).size.height * 0.055,
                     )
                   ],
                 ),
