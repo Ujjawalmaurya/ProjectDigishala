@@ -5,6 +5,7 @@ import 'package:digishala/student/stuLoginPage.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/material.dart';
+import 'package:digishala/student/landingPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       //
       //
       //
-      initialRoute: HomePage.id,
+      initialRoute: LandingPage.id,
       routes: {
         HomePage.id: (context) => HomePage(),
         StudentLoginScreen.id: (context) => StudentLoginScreen(),
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         AdmissionProcedure.id: (context) => AdmissionProcedure(),
         StudentZone.id: (context) => StudentZone(),
         Videos.id: (context) => Videos(),
+        LandingPage.id: (context) => LandingPage()
       },
       //
       //

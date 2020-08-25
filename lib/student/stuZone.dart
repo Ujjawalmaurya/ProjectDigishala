@@ -233,7 +233,7 @@ class _StudentZoneState extends State<StudentZone> {
                 color: kThemeColor,
               ),
               onTap: () {
-                // signOut();
+                signOut();
               },
             ),
           ],

@@ -73,13 +73,13 @@ class _HomePageState extends State<HomePage> {
   //   );
   // }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   loggedInOrNot();
-  //   SystemChrome.setPreferredOrientations(
-  //       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  // }
+  @override
+  void initState() {
+    super.initState();
+
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
 
   @override
   Widget build(BuildContext context) {
