@@ -23,6 +23,56 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String errorMsg;
 
+  // //LogIn Checker
+  // loggedInOrNot() async {
+  //   FirebaseUser user = await FirebaseAuth.instance.currentUser();
+  //   try {
+  //     if (user.email != null) {
+  //       Navigator.pushReplacementNamed(context, StudentZone.id);
+  //     } else {
+  //       print('not logged');
+  //     }
+  //   } catch (e) {
+  //     setState(() {
+  //       errorMsg = e.message;
+  //     });
+  //     errorDialog();
+  //   }
+  // }
+
+  // //Error dialog box
+  // errorDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         elevation: 10.0,
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(30.0),
+  //         ),
+  //         title: Text(
+  //           'Error',
+  //           style: TextStyle(color: Colors.red),
+  //         ),
+  //         content: Text(errorMsg),
+  //         actions: [
+  //           FlatButton(
+  //             color: Colors.red,
+  //             shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(30.0),
+  //               side: BorderSide(color: Colors.red, width: 2),
+  //             ),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text("Ok"),
+  //           )
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
   @override
   void initState() {
     super.initState();

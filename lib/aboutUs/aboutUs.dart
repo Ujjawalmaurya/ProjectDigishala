@@ -27,7 +27,7 @@ class _AboutUsState extends State<AboutUs> {
             ),
           ),
         ],
-        backgroundColor: kThemeColor,
+        backgroundColor: Colors.deepPurpleAccent,
         title: Text("About Us"),
         leading: Icon(Icons.account_box),
       ),
@@ -36,30 +36,38 @@ class _AboutUsState extends State<AboutUs> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
+            // UserAccountsDrawerHeader(
+            //   accountName: Text("Username"),
+            //   accountEmail: Text("usename@email.com"),
+            //   currentAccountPicture: CircleAvatar(
+            //     backgroundImage: AssetImage("assets/mascot.png"),
+            //   ),
+            // ),
+            ////================
+            //tiles=============
             ListTile(
               title: Text("Admission Procedure"),
-              leading: FaIcon(FontAwesomeIcons.plus, color: kThemeColor),
+              leading: FaIcon(FontAwesomeIcons.plus),
               onTap: () =>
                   Navigator.of(context).pushNamed(AdmissionProcedure.id),
             ),
             Divider(),
             ListTile(
               title: Text("Home"),
-              leading: FaIcon(FontAwesomeIcons.home, color: kThemeColor),
+              leading: FaIcon(FontAwesomeIcons.home),
               onTap: () => Navigator.of(context)
                   .pushNamedAndRemoveUntil(HomePage.id, (route) => false),
             ),
             ListTile(
               title: Text("Login"),
-              leading: FaIcon(FontAwesomeIcons.arrowAltCircleRight,
-                  color: kThemeColor),
-              onTap: () => Navigator.pushReplacementNamed(
-                  context, StudentLoginScreen.id),
+              leading: FaIcon(FontAwesomeIcons.arrowAltCircleRight),
+              onTap: () =>
+                  Navigator.of(context).popAndPushNamed(StudentLoginScreen.id),
             ),
             Divider(),
             ListTile(
               title: Text("About us"),
-              leading: Icon(Icons.account_balance, color: kThemeColor),
+              leading: Icon(Icons.account_balance),
               onTap: () => Navigator.of(context).pop(),
             ),
           ],
