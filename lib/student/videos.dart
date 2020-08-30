@@ -20,10 +20,13 @@ class _VideosState extends State<Videos> {
   void initState() {
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.link),
-      flags: YoutubePlayerFlags(autoPlay: true),
+      flags: YoutubePlayerFlags(
+        autoPlay: true,
+      ),
     );
 
     super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
@@ -32,28 +35,24 @@ class _VideosState extends State<Videos> {
 
   @override
   dispose() {
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(
-        //   title: Text("Watch Videos"),
-        //   centerTitle: true,
-        //   backgroundColor: kThemeColor,
-        // ),
-        body: Container(
+    return Container(
       alignment: Alignment.center,
       height: MediaQuery.of(context).size.height * 1,
       width: MediaQuery.of(context).size.width * 1,
       child: YoutubePlayer(controller: _controller),
-    ));
+    );
   }
 }
