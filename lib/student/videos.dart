@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 
 class Videos extends StatefulWidget {
   static const String id = 'videos';
+  final String link;
+  Videos({Key key, @required this.link}) : super(key: key);
   @override
   _VideosState createState() => _VideosState();
 }
@@ -17,7 +19,7 @@ class _VideosState extends State<Videos> {
   @override
   void initState() {
     _controller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(vidURL),
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.link),
       flags: YoutubePlayerFlags(autoPlay: true),
     );
 

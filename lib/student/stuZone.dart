@@ -1,4 +1,6 @@
 import 'package:digishala/homepage.dart';
+import 'package:digishala/student/docsList.dart';
+import 'package:digishala/student/videoList.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -129,6 +131,59 @@ class _StudentZoneState extends State<StudentZone> {
         });
   }
 
+  void docsOrVideo(sub) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          elevation: 10.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          title: Text(
+            'Alert',
+            style: TextStyle(color: Colors.red),
+          ),
+          content: Text('Select One Option'),
+          actions: [
+            FlatButton(
+              color: Colors.red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                side: BorderSide(color: Colors.red, width: 2),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return DocsList(sub: sub);
+                  },
+                ));
+              },
+              child: Text("Docs"),
+            ),
+            FlatButton(
+              color: Colors.red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                side: BorderSide(color: Colors.red, width: 2),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return VideosList(sub: sub);
+                  },
+                ));
+              },
+              child: Text("Videos"),
+            )
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -256,7 +311,9 @@ class _StudentZoneState extends State<StudentZone> {
                     ////=======================
                     SubjectContainer(
                       title: 'English',
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('English');
+                      },
                       colour: Colors.lightBlue,
                     ),
                   ],
@@ -268,12 +325,16 @@ class _StudentZoneState extends State<StudentZone> {
                   children: <Widget>[
                     SubjectContainer(
                       title: "Geography",
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('Geography');
+                      },
                       colour: Colors.deepPurpleAccent,
                     ),
                     SubjectContainer(
                       title: "History",
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('History');
+                      },
                       colour: Colors.green,
                     ),
                   ],
@@ -282,12 +343,16 @@ class _StudentZoneState extends State<StudentZone> {
                   children: <Widget>[
                     SubjectContainer(
                       title: "Civics",
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('Civics');
+                      },
                       colour: Colors.amberAccent,
                     ),
                     SubjectContainer(
                       title: 'Economics',
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('Economics');
+                      },
                       colour: Colors.indigo,
                     ),
                   ],
@@ -297,12 +362,16 @@ class _StudentZoneState extends State<StudentZone> {
                   children: <Widget>[
                     SubjectContainer(
                       title: "Physics",
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('Physics');
+                      },
                       colour: Colors.tealAccent,
                     ),
                     SubjectContainer(
                       title: 'Chemistry',
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('Chemistry');
+                      },
                       colour: Colors.cyanAccent,
                     ),
                   ],
@@ -311,7 +380,9 @@ class _StudentZoneState extends State<StudentZone> {
                   children: <Widget>[
                     SubjectContainer(
                       title: "Biology",
-                      onPressed: () {},
+                      onPressed: () {
+                        docsOrVideo('Biology');
+                      },
                       colour: Colors.greenAccent,
                     ),
                   ],
