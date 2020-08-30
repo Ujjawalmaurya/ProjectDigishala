@@ -1,6 +1,8 @@
 import 'package:digishala/aboutUs/aboutUs.dart';
 import 'package:digishala/aboutUs/admission.dart';
 import 'package:digishala/homepage.dart';
+import 'package:digishala/student/broadCast.dart';
+import 'package:digishala/student/chats.dart';
 import 'package:digishala/student/stuLoginPage.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:digishala/student/videos.dart';
@@ -24,7 +26,9 @@ class MyApp extends StatelessWidget {
         AdmissionProcedure.id: (context) => AdmissionProcedure(),
         StudentZone.id: (context) => StudentZone(),
         Videos.id: (context) => Videos(),
-        LandingPage.id: (context) => LandingPage()
+        LandingPage.id: (context) => LandingPage(),
+        ChatScreen.id: (context) => ChatScreen(),
+        BroadCast.id: (context) => BroadCast(),
       },
       //
       //

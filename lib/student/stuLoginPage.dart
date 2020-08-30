@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../homepage.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class StudentLoginScreen extends StatefulWidget {
   static const String id = 'stuLoginPage';
@@ -15,7 +14,6 @@ class StudentLoginScreen extends StatefulWidget {
 
 class _StudentLoginScreenState extends State<StudentLoginScreen> {
   GlobalKey<FormState> _key = new GlobalKey();
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
   FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseUser user;
   bool _autovalidate = false;
@@ -40,36 +38,6 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
         errorMsg = e.message;
       });
       errorDialog();
-    }
-  }
-
-//signIn with google
-
-  Future<FirebaseUser> handleGoogleSign() async {
-    try {
-      final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
-      final AuthCredential credential = GoogleAuthProvider.getCredential(
-          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-      user = (await _auth.signInWithCredential(credential)).user;
-
-      return user;
-    } catch (e) {
-      setState(() {
-        errorMsg = e.message;
-      });
-      errorDialog();
-    }
-  }
-
-  void googleSignin() async {
-    user = await handleGoogleSign();
-    print(user.email);
-    if (user != null) {
-      //Navigation
-      Navigator.pushReplacementNamed(context, StudentZone.id);
     }
   }
 
@@ -236,163 +204,3 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
     );
   }
 }
-
-// child: Column(
-//             children: <Widget>[
-//               SizedBox(
-//                 height: 25.0,
-//               ),
-//               ////==================
-//               // Logo with animation
-//               ////==================
-//               Hero(
-//                 tag: 'logo',
-//                 child: CircleAvatar(
-//                   backgroundColor: Colors.deepPurple,
-//                   radius: 75.0,
-//                   backgroundImage: kLogoAsset,
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 65.0,
-//               ),
-//               SingleChildScrollView(
-//                 child: Form(
-//                   key: _key,
-//                   child: Card(
-//                     margin: EdgeInsets.all(15.0),
-//                     shape: RoundedRectangleBorder(
-//                       borderRadius: BorderRadius.circular(20.0),
-//                     ),
-//                     child: Column(
-//                       children: <Widget>[
-//                         Padding(
-//                           padding: EdgeInsets.all(0.0),
-//                         ),
-//                         ////========
-//                         //Username
-//                         ////========
-//                         ListTile(
-//                           leading: FaIcon(FontAwesomeIcons.userAlt),
-//                           title: TextFormField(
-//                             validator: (input) {
-//                               if (input.isEmpty) {
-//                                 return 'Username is required';
-//                               }
-//                             },
-//                             decoration:
-//                                 InputDecoration(labelText: "Username"),
-//                             onSaved: (input) {
-//                               setState(() {
-//                                 email = input + '@test.app';
-//                               });
-//                               print(this.email);
-//                             },
-//                           ),
-//                         ),
-//                         ////==============
-//                         ///Password
-//                         ////==============
-//                         ListTile(
-//                           leading: FaIcon(FontAwesomeIcons.lock),
-//                           title: TextFormField(
-//                             obscureText: true,
-//                             validator: (input) {
-//                               if (input.isEmpty) {
-//                                 return 'Password is required';
-//                               } else if (input.length < 6) {
-//                                 return 'Password is too short';
-//                               }
-//                             },
-//                             decoration:
-//                                 InputDecoration(labelText: "Password"),
-//                             onSaved: (input) {
-//                               setState(() {
-//                                 pass = input;
-//                               });
-//                               print(this.pass);
-//                             },
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: EdgeInsets.all(10.0),
-//                         ),
-//                         Column(
-//                           children: [
-//                             ////===============////
-//                             //Get-in button
-//                             ////===============////
-//                             Container(
-//                               height: 50.0,
-//                               width: 220.0,
-//                               child: RaisedButton(
-//                                 onPressed: () async {
-//                                   if (_key.currentState.validate()) {
-//                                     _key.currentState.save();
-//                                     signIn();
-//                                   }
-//                                 },
-//                                 color: Colors.redAccent,
-//                                 splashColor: Colors.deepPurpleAccent,
-//                                 child: Text(
-//                                   "Get in",
-//                                   style: TextStyle(
-//                                     fontSize: 20.0,
-//                                     color: Colors.white,
-//                                     fontFamily: 'Pacifico',
-//                                   ),
-//                                 ),
-//                                 shape: RoundedRectangleBorder(
-//                                   borderRadius: BorderRadius.circular(25.0),
-//                                 ),
-//                               ),
-//                             ),
-//                             SizedBox(
-//                               height: 20.0,
-//                               child: Text(
-//                                 'or',
-//                                 style: TextStyle(
-//                                   color: Colors.black54,
-//                                   fontSize: 17.0,
-//                                   fontWeight: FontWeight.w400,
-//                                 ),
-//                               ),
-//                             ),
-//                             ////===========================////
-//                             //Sign in with Google Button
-//                             ////===========================////
-//                             Container(
-//                               height: 37.0,
-//                               width: 300.0,
-//                               child: RaisedButton(
-//                                 color: Colors.purpleAccent,
-//                                 splashColor: Colors.deepPurpleAccent,
-//                                 child: Text(
-//                                   "Sign-in with GOOGLE",
-//                                   style: TextStyle(
-//                                     fontSize: 18.0,
-//                                     color: Colors.white,
-//                                     // fontFamily: 'Pacifico',
-//                                   ),
-//                                 ),
-//                                 onPressed: () {
-//                                   //
-//                                   googleSignin();
-//                                   //
-//                                 },
-//                                 shape: RoundedRectangleBorder(
-//                                   borderRadius: BorderRadius.circular(25.0),
-//                                 ),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                         Padding(padding: EdgeInsets.all(20.0))
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),

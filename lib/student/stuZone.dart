@@ -1,4 +1,6 @@
 import 'package:digishala/homepage.dart';
+import 'package:digishala/student/broadCast.dart';
+import 'package:digishala/student/chats.dart';
 import 'package:digishala/student/docsList.dart';
 import 'package:digishala/student/videoList.dart';
 import 'package:digishala/student/videos.dart';
@@ -19,9 +21,23 @@ class StudentZone extends StatefulWidget {
 
 class _StudentZoneState extends State<StudentZone> {
   int studentClass;
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
   signOut() {
     Navigator.pushReplacementNamed(context, HomePage.id);
     FirebaseAuth.instance.signOut();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future checkIfClassIsSelectedOrNot() async {
@@ -187,6 +203,7 @@ class _StudentZoneState extends State<StudentZone> {
   @override
   void initState() {
     super.initState();
+    getCurrentUser();
     checkIfClassIsSelectedOrNot();
   }
 
@@ -195,14 +212,8 @@ class _StudentZoneState extends State<StudentZone> {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          /////===========================
-          ///logo with hero animation
-          ////============================
-          Hero(
-            tag: 'logo',
-            child: Image(
-              image: AssetImage('assets/mascot.png'),
-            ),
+          Image(
+            image: AssetImage('assets/mascot.png'),
           ),
         ],
         backgroundColor: kThemeColor, //value is in constants file
@@ -246,21 +257,26 @@ class _StudentZoneState extends State<StudentZone> {
             ),
             Divider(),
             ListTile(
-              title: Text("Chats"),
+              title: Text("Chats/Discussion"),
               leading: FaIcon(
                 Icons.chat,
                 color: kThemeColor,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, ChatScreen.id);
+              },
             ),
             ListTile(
-              title: Text("Group Discussion"),
+              title: Text("Notice/Announcements"),
               leading: FaIcon(
                 Icons.group,
                 color: kThemeColor,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, BroadCast.id);
+              },
             ),
+            Divider(),
             ListTile(
               title: Text("Change Class"),
               leading: FaIcon(
@@ -271,14 +287,6 @@ class _StudentZoneState extends State<StudentZone> {
                 Navigator.of(context).pop();
                 _showClassDialog();
               },
-            ),
-            ListTile(
-              title: Text("Provided Notes"),
-              leading: FaIcon(
-                Icons.note,
-                color: kThemeColor,
-              ),
-              onTap: () {},
             ),
             Divider(),
             ListTile(
