@@ -1,4 +1,5 @@
 import 'package:digishala/constants.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -108,7 +109,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       _firestore.collection('messages').add({
                         'text': messageText,
                         'sender': loggedInUser.email,
-                        'time': DateTime.now().millisecondsSinceEpoch,
+                        'timeStamp': Timestamp.now().millisecondsSinceEpoch,
                       });
                     },
                     child: Text(
