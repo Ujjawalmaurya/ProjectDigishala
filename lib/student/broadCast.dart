@@ -48,7 +48,10 @@ class _BroadCastState extends State<BroadCast> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             StreamBuilder<QuerySnapshot>(
-              stream: _firestore.collection('broadcast').snapshots(),
+              stream: _firestore
+                  .collection('broadcast')
+                  .orderBy('time', descending: false)
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(
