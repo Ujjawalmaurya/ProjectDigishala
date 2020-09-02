@@ -126,7 +126,10 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                       //Username
                       ////========
                       ListTile(
-                        leading: FaIcon(FontAwesomeIcons.userAlt),
+                        leading: FaIcon(
+                          FontAwesomeIcons.userAlt,
+                          color: kThemeColor,
+                        ),
                         title: TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           validator: (input) {
@@ -137,7 +140,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                           decoration: InputDecoration(labelText: "Username"),
                           onSaved: (input) {
                             setState(() {
-                              email = input;
+                              email = input + '@student.nca';
                             });
                             print(this.email);
                           },
@@ -147,7 +150,10 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                       ///Password
                       ////==============
                       ListTile(
-                          leading: FaIcon(FontAwesomeIcons.lock),
+                          leading: FaIcon(
+                            FontAwesomeIcons.keycdn,
+                            color: kThemeColor,
+                          ),
                           title: TextFormField(
                               obscureText: true,
                               validator: (input) {
@@ -189,7 +195,8 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                       color: Colors.white,
                                       fontFamily: 'Pacifico')),
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25.0)))),
+                                borderRadius: BorderRadius.circular(25.0),
+                              ))),
                       Padding(
                           padding: EdgeInsets.all(
                               MediaQuery.of(context).size.height * 0.035)),

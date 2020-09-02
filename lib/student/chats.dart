@@ -167,10 +167,8 @@ class Bubble extends StatelessWidget {
             color: itsMeOrNot ? Colors.lightBlue : Colors.white60,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              child: Text(
-                '${text}',
-                style: TextStyle(fontSize: 20.0),
-              ),
+              child: Text('${text}',
+                  style: TextStyle(fontSize: 20.0, color: Colors.white)),
             ),
           ),
         ],

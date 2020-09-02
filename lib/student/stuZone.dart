@@ -48,7 +48,7 @@ class _StudentZoneState extends State<StudentZone> {
 
       if (values == null) {
         Fluttertoast.showToast(
-            msg: 'Login with Correct Accout',
+            msg: 'Login with Correct Account',
             gravity: ToastGravity.BOTTOM,
             backgroundColor: Colors.red,
             toastLength: Toast.LENGTH_LONG);
@@ -134,23 +134,28 @@ class _StudentZoneState extends State<StudentZone> {
   @override
   Widget build(BuildContext context) {
     return isLoading == 'true'
-        ? Container(
-            height: MediaQuery.of(context).size.height * 1,
-            width: MediaQuery.of(context).size.width * 1,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(
-                    backgroundColor: Colors.purple,
-                  ),
-                  Text(
-                    'Fetching Data',
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                  )
-                ],
-              ),
-            ))
+        ? MaterialApp(
+            theme: ThemeData.dark(),
+            home: Scaffold(
+              body: Container(
+                  height: MediaQuery.of(context).size.height * 1,
+                  width: MediaQuery.of(context).size.width * 1,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(
+                          backgroundColor: kThemeColor,
+                        ),
+                        Text(
+                          'Fetching Data',
+                          style: TextStyle(color: Colors.white, fontSize: 25),
+                        )
+                      ],
+                    ),
+                  )),
+            ),
+          )
         : Scaffold(
             appBar: AppBar(
               actions: <Widget>[
@@ -171,7 +176,7 @@ class _StudentZoneState extends State<StudentZone> {
                 children: <Widget>[
                   UserAccountsDrawerHeader(
                     decoration: BoxDecoration(color: kThemeColor), //#constants
-                    accountName: Text("Student\'s.name"),
+                    accountName: Text("Class ${studentClass}"),
                     accountEmail: Text("Student\'s.email@nca"),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.purpleAccent,
@@ -188,7 +193,7 @@ class _StudentZoneState extends State<StudentZone> {
                     },
                   ),
                   ListTile(
-                    title: Text("Refreshe class"),
+                    title: Text("Refresh class"),
                     leading: FaIcon(
                       Icons.class_,
                       color: kThemeColor,
@@ -212,7 +217,7 @@ class _StudentZoneState extends State<StudentZone> {
                   ListTile(
                     title: Text("Notice/Announcements"),
                     leading: FaIcon(
-                      Icons.group,
+                      FontAwesomeIcons.broadcastTower,
                       color: kThemeColor,
                     ),
                     onTap: () {
@@ -224,7 +229,7 @@ class _StudentZoneState extends State<StudentZone> {
                   ListTile(
                     title: Text("Logout"),
                     leading: FaIcon(
-                      Icons.call_missed_outgoing,
+                      FontAwesomeIcons.signOutAlt,
                       color: kThemeColor,
                     ),
                     onTap: () {
@@ -367,9 +372,9 @@ class SubjectContainer extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              fontSize: 30.0,
+              fontSize: 27.0,
               color: Colors.white,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w800,
             ),
           ),
           color: colour,

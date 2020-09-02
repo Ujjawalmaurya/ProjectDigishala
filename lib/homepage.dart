@@ -55,19 +55,16 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Hero(
-                        tag: 'asset',
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
-                              image: DecorationImage(
-                                  image: AssetImage('assets/asset2.jpg'))),
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          //mediaquerry.of(context).size.width==== this will take full width
-                          //mediaquerry.of(context).size.width * 0.5(50%)==== this will take width in percent
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.0),
+                            image: DecorationImage(
+                                image: AssetImage('assets/asset2.jpg'))),
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        //mediaquerry.of(context).size.width==== this will take full width
+                        //mediaquerry.of(context).size.width * 0.5(50%)==== this will take width in percent
 
-                          height: MediaQuery.of(context).size.width * 0.9,
-                        ),
+                        height: MediaQuery.of(context).size.width * 0.9,
                       ),
                     ),
                     SizedBox(
@@ -93,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         color: Color(0xFFFF0084),
-                        splashColor: Colors.deepPurpleAccent,
+                        splashColor: kThemeColor,
                         textTheme: ButtonTextTheme.primary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
