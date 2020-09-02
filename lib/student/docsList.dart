@@ -77,11 +77,13 @@ class _DocsListState extends State<DocsList> {
             toastLength: Toast.LENGTH_LONG);
       } else {
         print('isnsise func');
+
         for (var i = 0; i < values.keys.length; i++) {
           setState(() {
             datakey[i] = values.keys.toList()[i].toString();
             snapShotdata[i] = values.values.toList()[i];
           });
+          print(snapShotdata.toString());
         }
         setState(() {
           isloading = 'false';

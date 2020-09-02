@@ -3,8 +3,11 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ChatScreen extends StatefulWidget {
+  final String studentClass;
+  ChatScreen({Key key, @required this.studentClass}) : super(key: key);
   static const String id = 'chat';
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -16,7 +19,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
   String messageText;
-
+  String currentClass;
   @override
   void initState() {
     super.initState();
@@ -50,7 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
           children: <Widget>[
             StreamBuilder<QuerySnapshot>(
               stream: _firestore
-                  .collection('messages')
+                  .collection(widget.studentClass)
                   .orderBy('time', descending: false)
                   .snapshots(),
               builder: (context, snapshot) {
@@ -109,7 +112,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       //send functionality
                       clearMessage.clear(); // Clears the message
-                      _firestore.collection('messages').add({
+                      _firestore.collection(widget.studentClass).add({
                         'text': messageText,
                         'sender': loggedInUser.email,
                         'time': Timestamp.now().millisecondsSinceEpoch,
