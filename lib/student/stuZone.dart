@@ -81,10 +81,11 @@ class _StudentZoneState extends State<StudentZone> {
             borderRadius: BorderRadius.circular(30.0),
           ),
           title: Text(
-            'Alert',
+            'Select your requirement',
             style: TextStyle(color: Colors.red),
           ),
-          content: Text('Select One Option'),
+          content: Text(
+              'Select "Docs" for provided Notes. Select "Videos" for Video Lectures.'),
           actions: [
             FlatButton(
               color: Colors.red,
@@ -174,14 +175,6 @@ class _StudentZoneState extends State<StudentZone> {
             drawer: Drawer(
               child: ListView(
                 children: <Widget>[
-                  UserAccountsDrawerHeader(
-                    decoration: BoxDecoration(color: kThemeColor), //#constants
-                    accountName: Text("Class ${studentClass}"),
-                    accountEmail: Text("Student\'s.email@nca"),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundColor: Colors.purpleAccent,
-                    ),
-                  ),
                   ListTile(
                     title: Text("Subjects"),
                     leading: FaIcon(
