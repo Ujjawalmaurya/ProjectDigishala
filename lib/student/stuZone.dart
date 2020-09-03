@@ -205,15 +205,18 @@ class _StudentZoneState extends State<StudentZone> {
                   ),
                   Divider(),
                   ListTile(
-                    title: Text("Chats/Discussion"),
-                    leading: FaIcon(
-                      Icons.chat,
-                      color: kThemeColor,
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, ChatScreen.id);
-                    },
-                  ),
+                      title: Text("Chats/Discussion"),
+                      leading: FaIcon(
+                        Icons.chat,
+                        color: kThemeColor,
+                      ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return ChatScreen(studentClass: studentClass);
+                          },
+                        ));
+                      }),
                   ListTile(
                     title: Text("Notice/Announcements"),
                     leading: FaIcon(
