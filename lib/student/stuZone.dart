@@ -81,16 +81,18 @@ class _StudentZoneState extends State<StudentZone> {
             borderRadius: BorderRadius.circular(30.0),
           ),
           title: Text(
-            'Select your requirement',
-            style: TextStyle(color: Colors.red),
+            'Select your option',
+            style: TextStyle(color: Colors.red, fontSize: 25.0),
           ),
           content: Text(
-              'Select "Docs" for provided Notes. Select "Videos" for Video Lectures.'),
+            'Select "Docs" for provided Notes, "Videos" for Video Lectures.',
+            style: TextStyle(fontSize: 17.0),
+          ),
           actions: [
             FlatButton(
               color: Colors.red,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
+                borderRadius: BorderRadius.circular(35.0),
                 side: BorderSide(color: Colors.red, width: 2),
               ),
               onPressed: () {
@@ -101,7 +103,7 @@ class _StudentZoneState extends State<StudentZone> {
                   },
                 ));
               },
-              child: Text("Docs"),
+              child: Text("Docs", style: TextStyle(fontSize: 22.0)),
             ),
             FlatButton(
               color: Colors.red,
@@ -117,7 +119,7 @@ class _StudentZoneState extends State<StudentZone> {
                   },
                 ));
               },
-              child: Text("Videos"),
+              child: Text("Videos", style: TextStyle(fontSize: 22.0)),
             )
           ],
         );
@@ -175,6 +177,15 @@ class _StudentZoneState extends State<StudentZone> {
             drawer: Drawer(
               child: ListView(
                 children: <Widget>[
+                  DrawerHeader(
+                      decoration: BoxDecoration(color: kThemeColor),
+                      child: Text('Navodaya Children\'s Academy',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 40.0,
+                              letterSpacing: 3.5,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.amberAccent))),
                   ListTile(
                     title: Text("Subjects"),
                     leading: FaIcon(
@@ -213,7 +224,7 @@ class _StudentZoneState extends State<StudentZone> {
                   ListTile(
                     title: Text("Notice/Announcements"),
                     leading: FaIcon(
-                      FontAwesomeIcons.broadcastTower,
+                      FontAwesomeIcons.bullhorn,
                       color: kThemeColor,
                     ),
                     onTap: () {
@@ -251,17 +262,76 @@ class _StudentZoneState extends State<StudentZone> {
                           ///subjects ===============
                           ////=======================
                           SubjectContainer(
-                            title: 'English',
+                              title: 'English',
+                              onPressed: () {
+                                docsOrVideo('English');
+                              },
+                              colour: Colors.blueAccent),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SubjectContainer(
+                            title: 'Hindi',
                             onPressed: () {
-                              docsOrVideo('English');
+                              docsOrVideo('Hindi');
                             },
-                            colour: Colors.lightBlue,
+                            colour: Colors.green,
+                          ),
+                          SubjectContainer(
+                            title: 'Maths',
+                            onPressed: () {
+                              docsOrVideo('Maths');
+                            },
+                            colour: Colors.deepOrangeAccent,
                           ),
                         ],
                       ),
                       Divider(
                         color: Colors.deepOrangeAccent,
                       ),
+                      Row(
+                        children: <Widget>[
+                          SubjectContainer(
+                            title: "Physics",
+                            onPressed: () {
+                              docsOrVideo('Physics');
+                            },
+                            colour: Colors.tealAccent,
+                          ),
+                        ],
+                      ),
+                      Row(children: <Widget>[
+                        SubjectContainer(
+                          title: 'Chemistry',
+                          onPressed: () {
+                            docsOrVideo('Chemistry');
+                          },
+                          colour: Colors.cyanAccent,
+                        ),
+                        SubjectContainer(
+                          title: "Biology",
+                          onPressed: () {
+                            docsOrVideo('Biology');
+                          },
+                          colour: Colors.greenAccent,
+                        )
+                      ]),
+                      Divider(color: Colors.deepPurpleAccent),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SubjectContainer(
+                            title: 'Computer',
+                            onPressed: () {
+                              docsOrVideo('Computer');
+                            },
+                            colour: Colors.lightBlue,
+                          ),
+                        ],
+                      ),
+                      Divider(color: Colors.deepOrangeAccent),
                       Row(
                         children: <Widget>[
                           SubjectContainer(
@@ -298,36 +368,6 @@ class _StudentZoneState extends State<StudentZone> {
                           ),
                         ],
                       ),
-                      Divider(color: Colors.deepPurpleAccent),
-                      Row(
-                        children: <Widget>[
-                          SubjectContainer(
-                            title: "Physics",
-                            onPressed: () {
-                              docsOrVideo('Physics');
-                            },
-                            colour: Colors.tealAccent,
-                          ),
-                          SubjectContainer(
-                            title: 'Chemistry',
-                            onPressed: () {
-                              docsOrVideo('Chemistry');
-                            },
-                            colour: Colors.cyanAccent,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          SubjectContainer(
-                            title: "Biology",
-                            onPressed: () {
-                              docsOrVideo('Biology');
-                            },
-                            colour: Colors.greenAccent,
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
@@ -359,18 +399,19 @@ class SubjectContainer extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(5.0),
         child: RaisedButton(
+          elevation: 50.0,
           highlightColor: Colors.white10,
-          padding: EdgeInsets.fromLTRB(5, 75, 5, 75),
+          padding: EdgeInsets.fromLTRB(5, 70, 5, 70),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(20.0),
           ),
           onPressed: onPressed,
           child: Text(
             title,
             style: TextStyle(
-              fontSize: 27.0,
+              fontSize: 30.0,
               color: Colors.white,
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w700,
             ),
           ),
           color: colour,

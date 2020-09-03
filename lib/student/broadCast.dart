@@ -107,7 +107,7 @@ class Bubble extends StatelessWidget {
         children: [
           Text(
             "School Management",
-            style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w800),
+            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w800),
           ),
           Material(
               borderRadius: BorderRadius.all(

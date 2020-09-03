@@ -20,11 +20,8 @@ class _AboutUsState extends State<AboutUs> {
           ////==============================
           ///logo with hero animation
           ////==============================
-          Hero(
-            tag: 'logo',
-            child: Image(
-              image: AssetImage('assets/mascot.png'),
-            ),
+          Image(
+            image: AssetImage('assets/mascot.png'),
           ),
         ],
         backgroundColor: Colors.deepPurpleAccent,
@@ -36,38 +33,35 @@ class _AboutUsState extends State<AboutUs> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            // UserAccountsDrawerHeader(
-            //   accountName: Text("Username"),
-            //   accountEmail: Text("usename@email.com"),
-            //   currentAccountPicture: CircleAvatar(
-            //     backgroundImage: AssetImage("assets/mascot.png"),
-            //   ),
-            // ),
+            DrawerHeader(
+              child: null,
+            ),
             ////================
             //tiles=============
             ListTile(
               title: Text("Admission Procedure"),
-              leading: FaIcon(FontAwesomeIcons.plus),
+              leading: FaIcon(FontAwesomeIcons.plus, color: kThemeColor),
               onTap: () =>
                   Navigator.of(context).pushNamed(AdmissionProcedure.id),
             ),
             Divider(),
             ListTile(
               title: Text("Home"),
-              leading: FaIcon(FontAwesomeIcons.home),
+              leading: FaIcon(FontAwesomeIcons.home, color: kThemeColor),
               onTap: () => Navigator.of(context)
                   .pushNamedAndRemoveUntil(HomePage.id, (route) => false),
             ),
             ListTile(
               title: Text("Login"),
-              leading: FaIcon(FontAwesomeIcons.arrowAltCircleRight),
+              leading: FaIcon(FontAwesomeIcons.arrowAltCircleRight,
+                  color: kThemeColor),
               onTap: () =>
                   Navigator.of(context).popAndPushNamed(StudentLoginScreen.id),
             ),
             Divider(),
             ListTile(
               title: Text("About us"),
-              leading: Icon(Icons.account_balance),
+              leading: Icon(Icons.account_balance, color: kThemeColor),
               onTap: () => Navigator.of(context).pop(),
             ),
           ],
