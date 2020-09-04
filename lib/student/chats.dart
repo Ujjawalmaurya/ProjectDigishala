@@ -1,9 +1,9 @@
 import 'package:digishala/constants.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 class ChatScreen extends StatefulWidget {
   final String studentClass;
@@ -67,10 +67,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 for (var message in messages) {
                   final messageText = message.data['text'];
                   final messageSender = message.data['sender'];
+                  final timeOfMsg = message.data['timeOfMsg'];
+                  final dateOfMsg = message.data['dateOfMsg'];
                   final currentUser = loggedInUser.email;
                   final messageWidget = Bubble(
                     sender: messageSender,
                     text: messageText,
+                    dateOfMsg: dateOfMsg,
+                    timeOfMsg: timeOfMsg,
                     itsMeOrNot: currentUser == messageSender,
                   );
                   messageWidgets.add(messageWidget);
@@ -111,11 +115,14 @@ class _ChatScreenState extends State<ChatScreen> {
                   FlatButton(
                     onPressed: () {
                       //send functionality
+                      final DateTime now = DateTime.now();
                       clearMessage.clear(); // Clears the message
                       _firestore.collection(widget.studentClass).add({
                         'text': messageText,
                         'sender': loggedInUser.email,
                         'time': Timestamp.now().millisecondsSinceEpoch,
+                        'timeOfMsg': DateFormat.jms().format(now),
+                        'dateOfMsg': DateFormat.yMMMMd().format(now),
                       });
                     },
                     child: Text(
@@ -138,11 +145,18 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class Bubble extends StatelessWidget {
-  Bubble({this.sender, this.text, this.itsMeOrNot});
+  Bubble(
+      {this.sender,
+      this.text,
+      this.itsMeOrNot,
+      this.dateOfMsg,
+      this.timeOfMsg});
 
   final String sender;
   final String text;
   final bool itsMeOrNot;
+  final String dateOfMsg;
+  final String timeOfMsg;
 
   @override
   Widget build(BuildContext context) {
@@ -171,9 +185,11 @@ class Bubble extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text('${text}',
-                  style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                  style: TextStyle(fontSize: 18.0, color: Colors.black)),
             ),
           ),
+          Text(timeOfMsg.toString(), style: TextStyle(fontSize: 10.0)),
+          Text(dateOfMsg.toString(), style: TextStyle(fontSize: 8.0)),
         ],
       ),
     );

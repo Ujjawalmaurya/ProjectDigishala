@@ -63,8 +63,10 @@ class _BroadCastState extends State<BroadCast> {
                 for (var message in messages) {
                   final messageText = message.data['text'];
                   final messageSender = message.data['sender'];
+                  final timeOfMsg = message.data['timeOfMsg'];
                   final messageWidget = Bubble(
                     sender: messageSender,
+                    timeOfMsg: timeOfMsg,
                     text: messageText,
                   );
                   messageWidgets.add(messageWidget);
@@ -93,10 +95,11 @@ class _BroadCastState extends State<BroadCast> {
 }
 
 class Bubble extends StatelessWidget {
-  Bubble({this.sender, this.text});
+  Bubble({this.sender, this.text, this.timeOfMsg});
 
   final String sender;
   final String text;
+  final String timeOfMsg;
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +109,8 @@ class Bubble extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "School Management",
-            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w800),
+            "${timeOfMsg} -School Management",
+            style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w900),
           ),
           Material(
               borderRadius: BorderRadius.all(
