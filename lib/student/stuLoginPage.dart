@@ -45,6 +45,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
     } catch (e) {
       setState(() {
         errorMsg = e.message;
+        isLoading = 'false';
       });
       errorDialog();
     }
