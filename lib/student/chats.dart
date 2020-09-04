@@ -2,6 +2,7 @@ import 'package:digishala/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
@@ -115,15 +116,25 @@ class _ChatScreenState extends State<ChatScreen> {
                   FlatButton(
                     onPressed: () {
                       //send functionality
-                      final DateTime now = DateTime.now();
-                      clearMessage.clear(); // Clears the message
-                      _firestore.collection(widget.studentClass).add({
-                        'text': messageText,
-                        'sender': loggedInUser.email,
-                        'time': Timestamp.now().millisecondsSinceEpoch,
-                        'timeOfMsg': DateFormat.jms().format(now),
-                        'dateOfMsg': DateFormat.yMMMMd().format(now),
-                      });
+                      if (messageText != null &&
+                          messageText.trim().length != 0) {
+                        final DateTime now = DateTime.now();
+                        clearMessage.clear(); // Clears the message
+                        _firestore.collection(widget.studentClass).add({
+                          'text': messageText,
+                          'sender': loggedInUser.email,
+                          'time': Timestamp.now().millisecondsSinceEpoch,
+                          'timeOfMsg': DateFormat.jms().format(now),
+                          'dateOfMsg': DateFormat.yMMMMd().format(now),
+                        });
+                      } else {
+                        Fluttertoast.showToast(
+                            msg: 'Enter text',
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            toastLength: Toast.LENGTH_SHORT);
+                        clearMessage.clear();
+                      }
                     },
                     child: Text(
                       'Send',
