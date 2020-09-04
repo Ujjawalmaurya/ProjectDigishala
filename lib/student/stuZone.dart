@@ -7,6 +7,7 @@ import 'package:digishala/student/videos.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
@@ -137,27 +138,19 @@ class _StudentZoneState extends State<StudentZone> {
   @override
   Widget build(BuildContext context) {
     return isLoading == 'true'
-        ? MaterialApp(
-            theme: ThemeData.dark(),
-            home: Scaffold(
-              body: Container(
-                  height: MediaQuery.of(context).size.height * 1,
-                  width: MediaQuery.of(context).size.width * 1,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircularProgressIndicator(
-                          backgroundColor: kThemeColor,
-                        ),
-                        Text(
-                          'Fetching Data',
-                          style: TextStyle(color: Colors.white, fontSize: 25),
-                        )
-                      ],
-                    ),
-                  )),
-            ),
+        ? Container(
+            color: Color(0xff4834DF),
+            height: MediaQuery.of(context).size.height * 1,
+            width: MediaQuery.of(context).size.width * 1,
+            child: Center(child: SpinKitRotatingPlain(
+              itemBuilder: (BuildContext context, int index) {
+                return DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: index.isEven ? Colors.red : Colors.yellow,
+                  ),
+                );
+              },
+            )),
           )
         : Scaffold(
             appBar: AppBar(
