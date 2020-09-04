@@ -71,7 +71,7 @@ class _DocsListState extends State<DocsList> {
           isloading = 'false';
         });
         Fluttertoast.showToast(
-            msg: 'No videos Docs in this section',
+            msg: 'No Documents in this section',
             gravity: ToastGravity.BOTTOM,
             backgroundColor: Colors.red,
             toastLength: Toast.LENGTH_LONG);
