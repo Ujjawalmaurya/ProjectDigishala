@@ -62,18 +62,17 @@ class _ChatScreenState extends State<ChatScreen> {
                 if (!snapshot.hasData) {
                   return Center(
                       child: Container(
-                    height: MediaQuery.of(context).size.height * 0.8,
-                    width: MediaQuery.of(context).size.width * 1,
-                    child: Center(child: SpinKitRotatingPlain(
-                      itemBuilder: (BuildContext context, int index) {
-                        return DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: index.isEven ? Colors.red : Colors.yellow,
-                          ),
-                        );
-                      },
-                    )),
-                  ));
+                          height: MediaQuery.of(context).size.height * 0.8,
+                          width: MediaQuery.of(context).size.width * 1,
+                          child: Center(child: SpinKitCubeGrid(
+                              itemBuilder: (BuildContext context, int index) {
+                            return DecoratedBox(
+                                decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadiusDirectional.circular(30.0),
+                              color: index.isEven ? Colors.red : kThemeColor,
+                            ));
+                          }))));
                 }
                 final messages = snapshot.data.documents.reversed;
                 List<Bubble> messageWidgets = [];

@@ -59,11 +59,13 @@ class _BroadCastState extends State<BroadCast> {
                       child: Container(
                     height: MediaQuery.of(context).size.height * 0.8,
                     width: MediaQuery.of(context).size.width * 1,
-                    child: Center(child: SpinKitRotatingPlain(
+                    child: Center(child: SpinKitCubeGrid(
                       itemBuilder: (BuildContext context, int index) {
                         return DecoratedBox(
                           decoration: BoxDecoration(
-                            color: index.isEven ? Colors.red : Colors.yellow,
+                            borderRadius:
+                                BorderRadiusDirectional.circular(30.0),
+                            color: index.isEven ? Colors.red : kThemeColor,
                           ),
                         );
                       },

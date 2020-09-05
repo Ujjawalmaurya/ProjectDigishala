@@ -121,11 +121,13 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                 child: Form(
                   key: _key,
                   child: Card(
-                    elevation: 20.0,
+                    elevation: 25.0,
                     margin: EdgeInsets.only(
-                        // top: 70.0, bottom: 70.0,
-                        left: MediaQuery.of(context).size.width * 0.05,
-                        right: MediaQuery.of(context).size.width * 0.05),
+                      left: MediaQuery.of(context).size.width * 0.05,
+                      right: MediaQuery.of(context).size.width * 0.05,
+                      top: MediaQuery.of(context).size.height * 0.08,
+                      bottom: MediaQuery.of(context).size.height * 0.17,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
@@ -133,21 +135,15 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: <Widget>[
-                            Padding(padding: EdgeInsets.all(5.0)),
-                            Hero(
-                              tag: 'asset',
-                              child: Container(
-                                  padding: EdgeInsets.all(5.0),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      image: DecorationImage(
-                                          image:
-                                              AssetImage('assets/asset3.jpg'))),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.9,
-                                  height:
-                                      MediaQuery.of(context).size.width * 0.70),
-                            ),
+                            Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    image: DecorationImage(
+                                        image:
+                                            AssetImage('assets/asset3.jpg'))),
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                height:
+                                    MediaQuery.of(context).size.width * 0.65),
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.005),
@@ -229,8 +225,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                     ))),
                             Padding(
                                 padding: EdgeInsets.all(
-                                    MediaQuery.of(context).size.height *
-                                        0.035)),
+                                    MediaQuery.of(context).size.height * 0.12)),
                           ],
                         ),
                       ),

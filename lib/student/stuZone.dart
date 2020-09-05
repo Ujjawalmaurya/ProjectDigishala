@@ -267,6 +267,7 @@ class _StudentZoneState extends State<StudentZone> {
                           ///subjects ===============
                           ////=======================
                           SubjectContainer(
+                            color: Colors.redAccent,
                             title: 'English',
                             onPressed: () {
                               docsOrVideo('English');
@@ -278,12 +279,14 @@ class _StudentZoneState extends State<StudentZone> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           SubjectContainer(
+                            color: Colors.orange,
                             title: 'Hindi',
                             onPressed: () {
                               docsOrVideo('Hindi');
                             },
                           ),
                           SubjectContainer(
+                            color: Colors.blueAccent,
                             title: 'Maths',
                             onPressed: () {
                               docsOrVideo('Maths');
@@ -297,6 +300,7 @@ class _StudentZoneState extends State<StudentZone> {
                       Row(
                         children: <Widget>[
                           SubjectContainer(
+                            color: Colors.cyanAccent,
                             title: "Physics",
                             onPressed: () {
                               docsOrVideo('Physics');
@@ -306,12 +310,14 @@ class _StudentZoneState extends State<StudentZone> {
                       ),
                       Row(children: <Widget>[
                         SubjectContainer(
+                          color: Colors.greenAccent,
                           title: 'Chemistry',
                           onPressed: () {
                             docsOrVideo('Chemistry');
                           },
                         ),
                         SubjectContainer(
+                          color: Colors.tealAccent,
                           title: "Biology",
                           onPressed: () {
                             docsOrVideo('Biology');
@@ -323,6 +329,7 @@ class _StudentZoneState extends State<StudentZone> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           SubjectContainer(
+                            color: Colors.deepPurpleAccent,
                             title: 'Computer',
                             onPressed: () {
                               docsOrVideo('Computer');
@@ -334,12 +341,14 @@ class _StudentZoneState extends State<StudentZone> {
                       Row(
                         children: <Widget>[
                           SubjectContainer(
+                            color: Colors.green,
                             title: "Geography",
                             onPressed: () {
                               docsOrVideo('Geography');
                             },
                           ),
                           SubjectContainer(
+                            color: Colors.pinkAccent,
                             title: "History",
                             onPressed: () {
                               docsOrVideo('History');
@@ -350,12 +359,14 @@ class _StudentZoneState extends State<StudentZone> {
                       Row(
                         children: <Widget>[
                           SubjectContainer(
+                            color: Colors.amberAccent,
                             title: "Civics",
                             onPressed: () {
                               docsOrVideo('Civics');
                             },
                           ),
                           SubjectContainer(
+                            color: Colors.indigo,
                             title: 'Economics',
                             onPressed: () {
                               docsOrVideo('Economics');
@@ -380,10 +391,12 @@ class SubjectContainer extends StatelessWidget {
     @required this.title,
     @required this.onPressed,
     // this.highlightColour,
+    @required this.color,
   });
 
   final String title;
   final Function onPressed;
+  final Color color;
   // final Color highlightColour;
 
   @override
@@ -407,7 +420,7 @@ class SubjectContainer extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          color: Colors.blue,
+          color: color,
         ),
       ),
     );

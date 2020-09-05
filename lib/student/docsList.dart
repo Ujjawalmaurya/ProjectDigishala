@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -111,12 +112,20 @@ class _DocsListState extends State<DocsList> {
       ),
       body: isloading == 'true'
           ? Container(
-              height: MediaQuery.of(context).size.height / 1,
-              width: MediaQuery.of(context).size.width / 1,
-              color: Colors.grey,
-              child: Center(
-                  child:
-                      CircularProgressIndicator(backgroundColor: kThemeColor)))
+              color: Color(0xff4834DF),
+              height: MediaQuery.of(context).size.height * 1,
+              width: MediaQuery.of(context).size.width * 1,
+              child: Center(child: SpinKitDoubleBounce(
+                itemBuilder: (BuildContext context, int index) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadiusDirectional.circular(30.0),
+                      color: index.isEven ? Colors.red : Colors.yellow,
+                    ),
+                  );
+                },
+              )),
+            )
           : Container(
               height: MediaQuery.of(context).size.height / 1,
               width: MediaQuery.of(context).size.width / 1,
