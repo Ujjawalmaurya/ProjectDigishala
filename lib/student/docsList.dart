@@ -1,3 +1,4 @@
+import 'package:digishala/constants.dart';
 import 'package:digishala/main.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/material.dart';
@@ -106,6 +107,7 @@ class _DocsListState extends State<DocsList> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Docs list'),
+        backgroundColor: kThemeColor,
       ),
       body: isloading == 'true'
           ? Container(
@@ -113,11 +115,8 @@ class _DocsListState extends State<DocsList> {
               width: MediaQuery.of(context).size.width / 1,
               color: Colors.grey,
               child: Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.purple,
-                ),
-              ),
-            )
+                  child:
+                      CircularProgressIndicator(backgroundColor: kThemeColor)))
           : Container(
               height: MediaQuery.of(context).size.height / 1,
               width: MediaQuery.of(context).size.width / 1,
@@ -125,8 +124,9 @@ class _DocsListState extends State<DocsList> {
                 itemCount: datakey.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    leading: FaIcon(FontAwesomeIcons.file),
-                    title: Text(snapShotdata[index]['title']),
+                    leading: FaIcon(FontAwesomeIcons.file, color: kThemeColor),
+                    title: Text(snapShotdata[index]['title'],
+                        style: TextStyle(fontSize: 17.0)),
                     subtitle: Text(snapShotdata[index]['filename']),
                     onTap: () {
                       launchUrl(snapShotdata[index]['url']);

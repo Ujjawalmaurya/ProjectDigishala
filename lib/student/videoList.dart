@@ -1,7 +1,9 @@
+import 'package:digishala/constants.dart';
 import 'package:digishala/homepage.dart';
 import 'package:digishala/main.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -94,6 +96,7 @@ class _VideosListState extends State<VideosList> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Videos list'),
+        backgroundColor: kThemeColor,
       ),
       body: isloading == 'true'
           ? Container(
@@ -102,7 +105,7 @@ class _VideosListState extends State<VideosList> {
               color: Colors.grey,
               child: Center(
                 child: CircularProgressIndicator(
-                  backgroundColor: Colors.purple,
+                  backgroundColor: kThemeColor,
                 ),
               ),
             )
@@ -113,8 +116,12 @@ class _VideosListState extends State<VideosList> {
                 itemCount: datakey.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    leading: Icon(Icons.video_call),
-                    title: Text(snapShotdata[index]['title']),
+                    leading: FaIcon(
+                      FontAwesomeIcons.video,
+                      color: kThemeColor,
+                    ),
+                    title: Text(snapShotdata[index]['title'],
+                        style: TextStyle(fontSize: 17.0)),
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {

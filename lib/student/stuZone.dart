@@ -78,50 +78,38 @@ class _StudentZoneState extends State<StudentZone> {
       builder: (context) {
         return AlertDialog(
           elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          title: Text(
-            'Select your option',
-            style: TextStyle(color: Colors.red, fontSize: 25.0),
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          title: Text('Select your option',
+              style: TextStyle(color: Colors.red, fontSize: 25.0)),
           content: Text(
-            'Select "Docs" for provided Notes, "Videos" for Video Lectures.',
-            style: TextStyle(fontSize: 17.0),
-          ),
+              'Select "Docs" for provided Documents, "Videos" for Video Lectures.',
+              style: TextStyle(fontSize: 17.0)),
           actions: [
             FlatButton(
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(35.0),
-                side: BorderSide(color: Colors.red, width: 2),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
+                color: Colors.red,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(35.0),
+                    side: BorderSide(color: Colors.red, width: 2)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return DocsList(sub: sub);
-                  },
-                ));
-              },
-              child: Text("Docs", style: TextStyle(fontSize: 22.0)),
-            ),
+                  }));
+                },
+                child: Text("Docs", style: TextStyle(fontSize: 20.0))),
             FlatButton(
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                side: BorderSide(color: Colors.red, width: 2),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
+                color: Colors.red,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    side: BorderSide(color: Colors.red, width: 2)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return VideosList(sub: sub);
-                  },
-                ));
-              },
-              child: Text("Videos", style: TextStyle(fontSize: 22.0)),
-            )
+                  }));
+                },
+                child: Text("Videos", style: TextStyle(fontSize: 20.0)))
           ],
         );
       },
@@ -142,7 +130,7 @@ class _StudentZoneState extends State<StudentZone> {
             color: Color(0xff4834DF),
             height: MediaQuery.of(context).size.height * 1,
             width: MediaQuery.of(context).size.width * 1,
-            child: Center(child: SpinKitRotatingPlain(
+            child: Center(child: SpinKitFadingCube(
               itemBuilder: (BuildContext context, int index) {
                 return DecoratedBox(
                   decoration: BoxDecoration(
@@ -172,13 +160,48 @@ class _StudentZoneState extends State<StudentZone> {
                 children: <Widget>[
                   DrawerHeader(
                       decoration: BoxDecoration(color: kThemeColor),
-                      child: Text('Navodaya Children\'s Academy',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 40.0,
-                              letterSpacing: 3.5,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.amberAccent))),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                              radius: MediaQuery.of(context).size.width * 0.15,
+                              child: Image(
+                                image: AssetImage('assets/mascot.png'),
+                              )),
+                          SizedBox(width: 8),
+                          Column(
+                            children: [
+                              Text('Navodaya',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 30.0,
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.amberAccent)),
+                              Text('Children\'s',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 30.0,
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.amberAccent)),
+                              Text('Academy',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 30.0,
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.amberAccent)),
+                              Text('DigiShala',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 15.0,
+                                      letterSpacing: 7,
+                                      fontWeight: FontWeight.w300,
+                                      color: Colors.white)),
+                            ],
+                          ),
+                        ],
+                      )),
                   ListTile(
                     title: Text("Subjects"),
                     leading: FaIcon(
@@ -200,7 +223,7 @@ class _StudentZoneState extends State<StudentZone> {
                     },
                     subtitle: Text("class ${studentClass}"),
                   ),
-                  Divider(),
+                  Divider(color: kThemeColor),
                   ListTile(
                       title: Text("Chats/Discussion"),
                       leading: FaIcon(
@@ -216,22 +239,18 @@ class _StudentZoneState extends State<StudentZone> {
                       }),
                   ListTile(
                     title: Text("Notice/Announcements"),
-                    leading: FaIcon(
-                      FontAwesomeIcons.bullhorn,
-                      color: kThemeColor,
-                    ),
+                    leading:
+                        FaIcon(FontAwesomeIcons.bullhorn, color: kThemeColor),
                     onTap: () {
                       Navigator.pushNamed(context, BroadCast.id);
                     },
                   ),
-                  Divider(),
-                  Divider(),
+                  Divider(color: kThemeColor),
+                  Divider(color: kThemeColor),
                   ListTile(
                     title: Text("Logout"),
-                    leading: FaIcon(
-                      FontAwesomeIcons.signOutAlt,
-                      color: kThemeColor,
-                    ),
+                    leading:
+                        FaIcon(FontAwesomeIcons.signOutAlt, color: kThemeColor),
                     onTap: () {
                       signOut();
                     },
@@ -255,11 +274,11 @@ class _StudentZoneState extends State<StudentZone> {
                           ///subjects ===============
                           ////=======================
                           SubjectContainer(
-                              title: 'English',
-                              onPressed: () {
-                                docsOrVideo('English');
-                              },
-                              colour: Colors.blueAccent),
+                            title: 'English',
+                            onPressed: () {
+                              docsOrVideo('English');
+                            },
+                          ),
                         ],
                       ),
                       Row(
@@ -270,14 +289,12 @@ class _StudentZoneState extends State<StudentZone> {
                             onPressed: () {
                               docsOrVideo('Hindi');
                             },
-                            colour: Colors.green,
                           ),
                           SubjectContainer(
                             title: 'Maths',
                             onPressed: () {
                               docsOrVideo('Maths');
                             },
-                            colour: Colors.deepOrangeAccent,
                           ),
                         ],
                       ),
@@ -291,7 +308,6 @@ class _StudentZoneState extends State<StudentZone> {
                             onPressed: () {
                               docsOrVideo('Physics');
                             },
-                            colour: Colors.tealAccent,
                           ),
                         ],
                       ),
@@ -301,14 +317,12 @@ class _StudentZoneState extends State<StudentZone> {
                           onPressed: () {
                             docsOrVideo('Chemistry');
                           },
-                          colour: Colors.cyanAccent,
                         ),
                         SubjectContainer(
                           title: "Biology",
                           onPressed: () {
                             docsOrVideo('Biology');
                           },
-                          colour: Colors.greenAccent,
                         )
                       ]),
                       Divider(color: Colors.deepPurpleAccent),
@@ -320,7 +334,6 @@ class _StudentZoneState extends State<StudentZone> {
                             onPressed: () {
                               docsOrVideo('Computer');
                             },
-                            colour: Colors.lightBlue,
                           ),
                         ],
                       ),
@@ -332,14 +345,12 @@ class _StudentZoneState extends State<StudentZone> {
                             onPressed: () {
                               docsOrVideo('Geography');
                             },
-                            colour: Colors.deepPurpleAccent,
                           ),
                           SubjectContainer(
                             title: "History",
                             onPressed: () {
                               docsOrVideo('History');
                             },
-                            colour: Colors.green,
                           ),
                         ],
                       ),
@@ -350,14 +361,12 @@ class _StudentZoneState extends State<StudentZone> {
                             onPressed: () {
                               docsOrVideo('Civics');
                             },
-                            colour: Colors.amberAccent,
                           ),
                           SubjectContainer(
                             title: 'Economics',
                             onPressed: () {
                               docsOrVideo('Economics');
                             },
-                            colour: Colors.indigo,
                           ),
                         ],
                       ),
@@ -377,13 +386,11 @@ class SubjectContainer extends StatelessWidget {
   SubjectContainer({
     @required this.title,
     @required this.onPressed,
-    @required this.colour,
     // this.highlightColour,
   });
 
   final String title;
   final Function onPressed;
-  final Color colour;
   // final Color highlightColour;
 
   @override
@@ -407,7 +414,7 @@ class SubjectContainer extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          color: colour,
+          color: Colors.blue,
         ),
       ),
     );
