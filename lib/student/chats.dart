@@ -147,7 +147,6 @@ class _ChatScreenState extends State<ChatScreen> {
                               backgroundColor: Colors.red,
                               textColor: Colors.white,
                               toastLength: Toast.LENGTH_LONG);
-                          clearMessage.clear();
                         }
                       } else {
                         Fluttertoast.showToast(

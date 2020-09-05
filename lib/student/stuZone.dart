@@ -37,15 +37,15 @@ class _StudentZoneState extends State<StudentZone> {
       isLoading = 'true';
     });
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    Map snapShotdata = Map();
     final FirebaseAuth auth = FirebaseAuth.instance;
     final FirebaseUser user = await auth.currentUser();
     final uid = user.uid;
 
     final db =
         FirebaseDatabase.instance.reference().child("studentInfos").child(uid);
-    db.once().then((DataSnapshot snapshot) {
-      Map<dynamic, dynamic> values = snapshot.value;
+
+    db.onValue.listen((event) {
+      var values = event.snapshot;
 
       if (values == null) {
         Fluttertoast.showToast(
@@ -54,13 +54,8 @@ class _StudentZoneState extends State<StudentZone> {
             backgroundColor: Colors.red,
             toastLength: Toast.LENGTH_LONG);
       } else {
-        for (var i = 0; i < values.keys.length; i++) {
-          setState(() {
-            snapShotdata[i] = values.values.toList()[i];
-          });
-        }
         setState(() {
-          studentClass = snapShotdata[1];
+          studentClass = values.value['class'].toString();
         });
 
         prefs.remove('selectedClass');
