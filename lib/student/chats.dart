@@ -130,15 +130,25 @@ class _ChatScreenState extends State<ChatScreen> {
                       //send functionality
                       if (messageText != null &&
                           messageText.trim().length != 0) {
-                        final DateTime now = DateTime.now();
-                        clearMessage.clear(); // Clears the message
-                        _firestore.collection(widget.studentClass).add({
-                          'text': messageText,
-                          'sender': loggedInUser.email,
-                          'time': Timestamp.now().millisecondsSinceEpoch,
-                          'timeOfMsg': DateFormat.jms().format(now),
-                          'dateOfMsg': DateFormat.yMMMMd().format(now),
-                        });
+                        if (widget.studentClass != 'expelled') {
+                          final DateTime now = DateTime.now();
+                          clearMessage.clear(); // Clears the message
+                          _firestore.collection(widget.studentClass).add({
+                            'text': messageText,
+                            'sender': loggedInUser.email,
+                            'time': Timestamp.now().millisecondsSinceEpoch,
+                            'timeOfMsg': DateFormat.jms().format(now),
+                            'dateOfMsg': DateFormat.yMMMMd().format(now),
+                          });
+                        } else {
+                          Fluttertoast.showToast(
+                              msg:
+                                  'You are Explled And not eligible to send message',
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              toastLength: Toast.LENGTH_LONG);
+                          clearMessage.clear();
+                        }
                       } else {
                         Fluttertoast.showToast(
                             msg: 'Enter text',
