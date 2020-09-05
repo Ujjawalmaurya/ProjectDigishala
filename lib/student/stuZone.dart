@@ -167,7 +167,6 @@ class _StudentZoneState extends State<StudentZone> {
                               child: Image(
                                 image: AssetImage('assets/mascot.png'),
                               )),
-                          SizedBox(width: 8),
                           Column(
                             children: [
                               Text('Navodaya',
@@ -245,7 +244,6 @@ class _StudentZoneState extends State<StudentZone> {
                       Navigator.pushNamed(context, BroadCast.id);
                     },
                   ),
-                  Divider(color: kThemeColor),
                   Divider(color: kThemeColor),
                   ListTile(
                     title: Text("Logout"),
