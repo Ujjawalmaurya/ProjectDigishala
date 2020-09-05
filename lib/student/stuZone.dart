@@ -1,3 +1,4 @@
+import 'package:digishala/aboutUs/aboutUs.dart';
 import 'package:digishala/homepage.dart';
 import 'package:digishala/student/broadCast.dart';
 import 'package:digishala/student/chats.dart';
@@ -238,6 +239,16 @@ class _StudentZoneState extends State<StudentZone> {
                     onTap: () {
                       Navigator.pushNamed(context, BroadCast.id);
                     },
+                  ),
+                  Divider(color: kThemeColor),
+                  ListTile(
+                    title: Text("About us"),
+                    leading:
+                        FaIcon(FontAwesomeIcons.infoCircle, color: kThemeColor),
+                    onTap: () {
+                      Navigator.pushNamed(context, AboutUs.id);
+                    },
+                    onLongPress: () {},
                   ),
                   Divider(color: kThemeColor),
                   ListTile(

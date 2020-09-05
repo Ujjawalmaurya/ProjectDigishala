@@ -16,17 +16,14 @@ class _AboutUsState extends State<AboutUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 10.0,
         actions: <Widget>[
-          ////==============================
-          ///logo with hero animation
-          ////==============================
           Image(
             image: AssetImage('assets/mascot.png'),
           ),
         ],
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: kThemeColor,
         title: Text("About Us"),
-        leading: Icon(Icons.account_box),
       ),
       ////=======
       ///Drawer==
@@ -34,17 +31,50 @@ class _AboutUsState extends State<AboutUs> {
         child: ListView(
           children: <Widget>[
             DrawerHeader(
-              child: null,
-            ),
-            ////================
-            //tiles=============
+                decoration: BoxDecoration(color: kThemeColor),
+                child: Row(children: [
+                  CircleAvatar(
+                      radius: MediaQuery.of(context).size.width * 0.15,
+                      child: Image(
+                        image: AssetImage('assets/mascot.png'),
+                      )),
+                  Column(children: [
+                    Text('Navodaya',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            letterSpacing: 1.5,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.amberAccent)),
+                    Text('Children\'s',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            letterSpacing: 1.5,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.amberAccent)),
+                    Text('Academy',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            letterSpacing: 1.5,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.amberAccent)),
+                    Text('DigiShala',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 15.0,
+                            letterSpacing: 7,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white))
+                  ])
+                ])),
             ListTile(
-              title: Text("Admission Procedure"),
-              leading: FaIcon(FontAwesomeIcons.plus, color: kThemeColor),
-              onTap: () =>
-                  Navigator.of(context).pushNamed(AdmissionProcedure.id),
+              title: Text("About us"),
+              leading: Icon(Icons.account_balance, color: kThemeColor),
+              onTap: () => Navigator.of(context).pop(),
             ),
-            Divider(),
+            Divider(color: kThemeColor),
             ListTile(
               title: Text("Home"),
               leading: FaIcon(FontAwesomeIcons.home, color: kThemeColor),
@@ -55,14 +85,12 @@ class _AboutUsState extends State<AboutUs> {
               title: Text("Login"),
               leading: FaIcon(FontAwesomeIcons.arrowAltCircleRight,
                   color: kThemeColor),
-              onTap: () =>
-                  Navigator.of(context).popAndPushNamed(StudentLoginScreen.id),
+              onTap: () => Navigator.of(context)
+                  .pushReplacementNamed(StudentLoginScreen.id),
             ),
-            Divider(),
+            Divider(color: kThemeColor),
             ListTile(
-              title: Text("About us"),
-              leading: Icon(Icons.account_balance, color: kThemeColor),
-              onTap: () => Navigator.of(context).pop(),
+              title: Text("Privacy Policy"),
             ),
           ],
         ),
