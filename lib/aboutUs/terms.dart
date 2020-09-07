@@ -63,8 +63,8 @@ class _TermsnCState extends State<TermsnC> {
                         style: TextStyle(fontSize: 12.0)),
                     Text("Contact Us", style: TextStyle(fontSize: 18.0)),
                     Text(
-                        "If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at chocolateboyz0011@gmail.com.",
-                        style: TextStyle(fontSize: 16.0)),
+                        "If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at digishalanca@gmail.com.",
+                        style: TextStyle(fontSize: 14.0)),
                   ],
                 ),
               ),

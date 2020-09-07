@@ -60,29 +60,24 @@ class _AboutUsState extends State<AboutUs> {
                   )
                 ])),
             ListTile(
-              title: Text("About us"),
-              leading: FaIcon(
-                FontAwesomeIcons.infoCircle,
-                color: kThemeColor,
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+                title: Text("About us"),
+                leading:
+                    FaIcon(FontAwesomeIcons.infoCircle, color: kThemeColor),
+                onTap: () {
+                  Navigator.pop(context);
+                }),
             ListTile(
-              title: Text("Privacy policy"),
-              // leading: FaIcon(FontAwesomeIcons.infoCircle, color: kThemeColor),
-              onTap: () {
-                Navigator.pushNamed(context, Policy.id);
-              },
-            ),
+                title: Text("Privacy policy"),
+                // leading: FaIcon(FontAwesomeIcons.infoCircle, color: kThemeColor),
+                onTap: () {
+                  Navigator.pushNamed(context, Policy.id);
+                }),
             ListTile(
-              title: Text("Terms and Conditions"),
-              // leading: FaIcon(FontAwesomeIcons.infoCircle, color: kThemeColor),
-              onTap: () {
-                Navigator.pushNamed(context, TermsnC.id);
-              },
-            ),
+                title: Text("Terms and Conditions"),
+                // leading: FaIcon(FontAwesomeIcons.infoCircle, color: kThemeColor),
+                onTap: () {
+                  Navigator.pushNamed(context, TermsnC.id);
+                }),
           ],
         ),
       ),

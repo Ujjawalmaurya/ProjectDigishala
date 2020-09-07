@@ -92,8 +92,7 @@ class _PolicyState extends State<Policy> {
               Text("Contact Us", style: TextStyle(fontSize: 16.0)),
               Text(
                   "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at "),
-              Text("chocolateboyz0011@gmail.com.",
-                  style: TextStyle(fontSize: 16.0)),
+              Text("digishalanca@gmail.com.", style: TextStyle(fontSize: 14.0)),
             ],
           ),
         ),
