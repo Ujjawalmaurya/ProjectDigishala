@@ -1,10 +1,11 @@
 import 'package:digishala/constants.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../homepage.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:device_info/device_info.dart';
 
 class StudentLoginScreen extends StatefulWidget {
   static const String id = 'stuLoginPage';
@@ -29,18 +30,14 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
       isLoading = 'true';
     });
     try {
-      AuthResult result = await _auth
-          .signInWithEmailAndPassword(email: this.email, password: this.pass)
-          .whenComplete(() {
-        setState(() {
-          isLoading = 'false';
-        });
-      });
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: this.email, password: this.pass);
+
       final FirebaseUser user = result.user;
       print(user);
       if (user != null) {
         //Navigation
-        Navigator.pushReplacementNamed(context, StudentZone.id);
+        writeDeviceInfo();
       }
     } catch (e) {
       setState(() {
@@ -49,6 +46,22 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
       });
       errorDialog();
     }
+  }
+
+  writeDeviceInfo() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    final user = await FirebaseAuth.instance.currentUser();
+    final dbInstance = FirebaseDatabase.instance.reference();
+    dbInstance.child("deviceData").child(user.uid).push().set({
+      "LoggedDevice": androidInfo.model.toString(),
+      "email": user.email,
+    });
+    setState(() {
+      isLoading = 'false';
+    });
+    Navigator.pushNamedAndRemoveUntil(
+        context, StudentZone.id, (route) => false);
   }
 
   errorDialog() {

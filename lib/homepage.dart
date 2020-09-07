@@ -1,20 +1,11 @@
 import 'package:digishala/aboutUs/aboutUs.dart';
 import 'package:digishala/student/stuLoginPage.dart';
-import 'package:digishala/student/stuZone.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'HomePage';
-  final String username, pass;
-
-  HomePage({
-    Key key,
-    @required this.username,
-    @required this.pass,
-  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -77,10 +68,8 @@ class _HomePageState extends State<HomePage> {
                         elevation: 20.0,
                         onPressed: () {
                           ///Navigation
-                          Navigator.pushReplacementNamed(
-                            context,
-                            StudentLoginScreen.id,
-                          );
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, StudentLoginScreen.id, (route) => false);
                         },
                         child: Text(
                           "Login",

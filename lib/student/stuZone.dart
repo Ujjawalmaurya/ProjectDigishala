@@ -4,7 +4,6 @@ import 'package:digishala/student/broadCast.dart';
 import 'package:digishala/student/chats.dart';
 import 'package:digishala/student/docsList.dart';
 import 'package:digishala/student/videoList.dart';
-import 'package:digishala/student/videos.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
-import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,10 +24,10 @@ class StudentZone extends StatefulWidget {
 class _StudentZoneState extends State<StudentZone> {
   String isLoading = "false";
   String studentClass;
-  final _auth = FirebaseAuth.instance;
+  String studentEmail;
   FirebaseUser loggedInUser;
   signOut() {
-    Navigator.pushReplacementNamed(context, HomePage.id);
+    Navigator.pushNamedAndRemoveUntil(context, HomePage.id, (route) => false);
     FirebaseAuth.instance.signOut();
   }
 
@@ -40,6 +38,9 @@ class _StudentZoneState extends State<StudentZone> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final FirebaseAuth auth = FirebaseAuth.instance;
     final FirebaseUser user = await auth.currentUser();
+    setState(() {
+      studentEmail = user.email.toString();
+    });
     final uid = user.uid;
 
     final db =
@@ -168,29 +169,53 @@ class _StudentZoneState extends State<StudentZone> {
                               Text('Navodaya',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 26.0,
-                                      letterSpacing: 1.5,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          55,
+                                      letterSpacing: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          5,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.amberAccent)),
                               Text('Children\'s',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 26.0,
-                                      letterSpacing: 1.5,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          55,
+                                      letterSpacing: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          5,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.amberAccent)),
                               Text('Academy',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 26.0,
-                                      letterSpacing: 1.5,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          55,
+                                      letterSpacing: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          5,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.amberAccent)),
                               Text('DigiShala',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 14.0,
-                                      letterSpacing: 7,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          40,
+                                      letterSpacing: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          7,
                                       fontWeight: FontWeight.w300,
                                       color: Colors.white)),
                             ],
@@ -201,6 +226,17 @@ class _StudentZoneState extends State<StudentZone> {
                     title: Text("Subjects"),
                     leading: FaIcon(
                       Icons.subject,
+                      color: kThemeColor,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: Text("Login As "),
+                    subtitle: Text(studentEmail),
+                    leading: FaIcon(
+                      Icons.email,
                       color: kThemeColor,
                     ),
                     onTap: () {

@@ -1,5 +1,4 @@
 import 'package:digishala/homepage.dart';
-import 'package:digishala/student/stuLoginPage.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -1,14 +1,10 @@
 import 'package:digishala/constants.dart';
-import 'package:digishala/homepage.dart';
-import 'package:digishala/main.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class VideosList extends StatefulWidget {
