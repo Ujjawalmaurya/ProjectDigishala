@@ -159,7 +159,7 @@ class _StudentZoneState extends State<StudentZone> {
                       child: Row(
                         children: [
                           CircleAvatar(
-                              radius: MediaQuery.of(context).size.width * 0.15,
+                              radius: MediaQuery.of(context).size.width * 0.13,
                               child: Image(
                                 image: AssetImage('assets/mascot.png'),
                               )),
@@ -168,28 +168,28 @@ class _StudentZoneState extends State<StudentZone> {
                               Text('Navodaya',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 30.0,
+                                      fontSize: 26.0,
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.amberAccent)),
                               Text('Children\'s',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 30.0,
+                                      fontSize: 26.0,
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.amberAccent)),
                               Text('Academy',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 30.0,
+                                      fontSize: 26.0,
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.amberAccent)),
                               Text('DigiShala',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 15.0,
+                                      fontSize: 14.0,
                                       letterSpacing: 7,
                                       fontWeight: FontWeight.w300,
                                       color: Colors.white)),
