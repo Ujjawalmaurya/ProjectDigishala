@@ -92,7 +92,7 @@ class _VideosListState extends State<VideosList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Videos list'),
+        title: Text('${widget.sub} Videos list'),
         backgroundColor: kThemeColor,
       ),
       body: isloading == 'true'
@@ -117,20 +117,25 @@ class _VideosListState extends State<VideosList> {
               child: ListView.builder(
                 itemCount: datakey.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: FaIcon(
-                      FontAwesomeIcons.video,
-                      color: kThemeColor,
-                    ),
-                    title: Text(snapShotdata[index]['title'],
-                        style: TextStyle(fontSize: 17.0)),
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return Videos(link: snapShotdata[index]['link']);
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: FaIcon(
+                          FontAwesomeIcons.video,
+                          color: kThemeColor,
+                        ),
+                        title: Text(snapShotdata[index]['title'],
+                            style: TextStyle(fontSize: 17.0)),
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return Videos(link: snapShotdata[index]['link']);
+                            },
+                          ));
                         },
-                      ));
-                    },
+                      ),
+                      Divider(color: kThemeColor)
+                    ],
                   );
                 },
               ),

@@ -103,7 +103,7 @@ class _DocsListState extends State<DocsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Docs list'),
+        title: Text('${selectedSubject} Docs list'),
         backgroundColor: kThemeColor,
       ),
       body: isloading == 'true'
@@ -128,14 +128,20 @@ class _DocsListState extends State<DocsList> {
               child: ListView.builder(
                 itemCount: datakey.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: FaIcon(FontAwesomeIcons.file, color: kThemeColor),
-                    title: Text(snapShotdata[index]['title'],
-                        style: TextStyle(fontSize: 17.0)),
-                    subtitle: Text(snapShotdata[index]['filename']),
-                    onTap: () {
-                      launchUrl(snapShotdata[index]['url']);
-                    },
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading:
+                            FaIcon(FontAwesomeIcons.file, color: kThemeColor),
+                        title: Text(snapShotdata[index]['title'],
+                            style: TextStyle(fontSize: 17.0)),
+                        subtitle: Text(snapShotdata[index]['filename']),
+                        onTap: () {
+                          launchUrl(snapShotdata[index]['url']);
+                        },
+                      ),
+                      Divider(color: kThemeColor)
+                    ],
                   );
                 },
               ),

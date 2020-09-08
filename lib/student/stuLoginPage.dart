@@ -136,14 +136,13 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                   child: Card(
                     elevation: 25.0,
                     margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.05,
-                      right: MediaQuery.of(context).size.width * 0.05,
+                      left: MediaQuery.of(context).size.width * 0.06,
+                      right: MediaQuery.of(context).size.width * 0.06,
                       top: MediaQuery.of(context).size.height * 0.08,
-                      bottom: MediaQuery.of(context).size.height * 0.17,
+                      bottom: MediaQuery.of(context).size.height * 0.15,
                     ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
+                        borderRadius: BorderRadius.circular(20.0)),
                     child: Container(
                       child: SingleChildScrollView(
                         child: Column(
@@ -154,9 +153,9 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                                     image: DecorationImage(
                                         image:
                                             AssetImage('assets/asset3.jpg'))),
-                                width: MediaQuery.of(context).size.width * 0.8,
+                                width: MediaQuery.of(context).size.width * 0.75,
                                 height:
-                                    MediaQuery.of(context).size.width * 0.65),
+                                    MediaQuery.of(context).size.width * 0.60),
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.005),

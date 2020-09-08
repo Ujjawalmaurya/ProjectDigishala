@@ -128,15 +128,11 @@ class _StudentZoneState extends State<StudentZone> {
             height: MediaQuery.of(context).size.height * 1,
             width: MediaQuery.of(context).size.width * 1,
             child: Center(child: SpinKitFadingCube(
-              itemBuilder: (BuildContext context, int index) {
-                return DecoratedBox(
+                itemBuilder: (BuildContext context, int index) {
+              return DecoratedBox(
                   decoration: BoxDecoration(
-                    color: index.isEven ? Colors.red : Colors.yellow,
-                  ),
-                );
-              },
-            )),
-          )
+                      color: index.isEven ? Colors.red : Colors.yellow));
+            })))
         : Scaffold(
             appBar: AppBar(
               actions: <Widget>[
@@ -145,10 +141,10 @@ class _StudentZoneState extends State<StudentZone> {
                 ),
               ],
               backgroundColor: kThemeColor, //value is in constants file
-              title: Text(
-                "Subjects",
-                style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-              ),
+              title: Text("Subjects",
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * 0.07,
+                      fontWeight: FontWeight.bold)),
               titleSpacing: 2.5,
               centerTitle: true,
             ),
@@ -157,71 +153,59 @@ class _StudentZoneState extends State<StudentZone> {
                 children: <Widget>[
                   DrawerHeader(
                       decoration: BoxDecoration(color: kThemeColor),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                              radius: MediaQuery.of(context).size.width * 0.13,
-                              child: Image(
-                                image: AssetImage('assets/mascot.png'),
-                              )),
-                          Column(
-                            children: [
-                              Text('Navodaya',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          55,
-                                      letterSpacing: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
+                      child: Row(children: [
+                        CircleAvatar(
+                            radius: MediaQuery.of(context).size.width * 0.13,
+                            child: Image(
+                              image: AssetImage('assets/mascot.png'),
+                            )),
+                        Column(children: [
+                          Text('Navodaya',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.aspectRatio *
+                                          46,
+                                  letterSpacing:
+                                      MediaQuery.of(context).size.aspectRatio *
                                           5,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.amberAccent)),
-                              Text('Children\'s',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          55,
-                                      letterSpacing: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.amberAccent)),
+                          Text('Children\'s',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.aspectRatio *
+                                          46,
+                                  letterSpacing:
+                                      MediaQuery.of(context).size.aspectRatio *
                                           5,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.amberAccent)),
-                              Text('Academy',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          55,
-                                      letterSpacing: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.amberAccent)),
+                          Text('Academy',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.aspectRatio *
+                                          46,
+                                  letterSpacing:
+                                      MediaQuery.of(context).size.aspectRatio *
                                           5,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.amberAccent)),
-                              Text('DigiShala',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          40,
-                                      letterSpacing: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          7,
-                                      fontWeight: FontWeight.w300,
-                                      color: Colors.white)),
-                            ],
-                          ),
-                        ],
-                      )),
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.amberAccent)),
+                          Text('DigiShala',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.aspectRatio *
+                                          30,
+                                  letterSpacing:
+                                      MediaQuery.of(context).size.aspectRatio *
+                                          7.5,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white)),
+                        ])
+                      ])),
                   ListTile(
                     title: Text("Subjects"),
                     leading: FaIcon(
@@ -233,7 +217,7 @@ class _StudentZoneState extends State<StudentZone> {
                     },
                   ),
                   ListTile(
-                    title: Text("Login As "),
+                    title: Text("Logged in as "),
                     subtitle: Text(studentEmail),
                     leading: FaIcon(
                       Icons.email,
@@ -452,9 +436,9 @@ class SubjectContainer extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(5.0),
         child: RaisedButton(
-          elevation: 50.0,
+          elevation: 30.0,
           highlightColor: Colors.white10,
-          padding: EdgeInsets.fromLTRB(5, 70, 5, 70),
+          padding: EdgeInsets.fromLTRB(5, 65, 5, 65),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -462,7 +446,7 @@ class SubjectContainer extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              fontSize: 30.0,
+              fontSize: MediaQuery.of(context).size.aspectRatio * 45,
               color: Colors.white,
               fontWeight: FontWeight.w700,
             ),
