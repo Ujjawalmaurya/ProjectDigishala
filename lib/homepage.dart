@@ -1,5 +1,5 @@
 import 'package:digishala/aboutUs/aboutUs.dart';
-import 'package:digishala/student/stuLoginPage.dart';
+import 'package:digishala/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:flutter/services.dart';

@@ -446,10 +446,9 @@ class SubjectContainer extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              fontSize: MediaQuery.of(context).size.aspectRatio * 45,
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                fontSize: MediaQuery.of(context).size.aspectRatio * 45,
+                color: Colors.white,
+                fontWeight: FontWeight.w700),
           ),
           color: color,
         ),

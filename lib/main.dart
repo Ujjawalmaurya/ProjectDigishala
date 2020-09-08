@@ -5,7 +5,7 @@ import 'package:digishala/aboutUs/terms.dart';
 import 'package:digishala/homepage.dart';
 import 'package:digishala/student/broadCast.dart';
 import 'package:digishala/student/chats.dart';
-import 'package:digishala/student/stuLoginPage.dart';
+import 'package:digishala/loginPage.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:digishala/student/videos.dart';
 import 'package:flutter/material.dart';
