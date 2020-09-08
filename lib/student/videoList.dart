@@ -1,5 +1,5 @@
 import 'package:digishala/constants.dart';
-import 'package:digishala/student/videos.dart';
+import 'package:digishala/student/videoPlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -91,55 +91,53 @@ class _VideosListState extends State<VideosList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('${widget.sub} Videos list'),
-        backgroundColor: kThemeColor,
-      ),
-      body: isloading == 'true'
-          ? Container(
-              color: Color(0xff4834DF),
-              height: MediaQuery.of(context).size.height * 1,
-              width: MediaQuery.of(context).size.width * 1,
-              child: Center(child: SpinKitDoubleBounce(
-                itemBuilder: (BuildContext context, int index) {
-                  return DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadiusDirectional.circular(30.0),
-                      color: index.isEven ? Colors.red : Colors.yellow,
-                    ),
-                  );
-                },
-              )),
-            )
-          : Container(
-              height: MediaQuery.of(context).size.height / 1,
-              width: MediaQuery.of(context).size.width / 1,
-              child: ListView.builder(
-                itemCount: datakey.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      ListTile(
-                        leading: FaIcon(
-                          FontAwesomeIcons.video,
-                          color: kThemeColor,
-                        ),
-                        title: Text(snapShotdata[index]['title'],
-                            style: TextStyle(fontSize: 17.0)),
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return Videos(link: snapShotdata[index]['link']);
-                            },
-                          ));
-                        },
+        appBar: AppBar(
+          title: Text('${widget.sub} Videos list'),
+          backgroundColor: kThemeColor,
+        ),
+        body: isloading == 'true'
+            ? Container(
+                color: Color(0xff4834DF),
+                height: MediaQuery.of(context).size.height * 1,
+                width: MediaQuery.of(context).size.width * 1,
+                child: Center(child: SpinKitDoubleBounce(
+                  itemBuilder: (BuildContext context, int index) {
+                    return DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadiusDirectional.circular(30.0),
+                        color: index.isEven ? Colors.red : Colors.yellow,
                       ),
-                      Divider(color: kThemeColor)
-                    ],
-                  );
-                },
-              ),
-            ),
-    );
+                    );
+                  },
+                )),
+              )
+            : Container(
+                height: MediaQuery.of(context).size.height / 1,
+                width: MediaQuery.of(context).size.width / 1,
+                child: ListView.builder(
+                  itemCount: datakey.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        ListTile(
+                            leading: FaIcon(
+                              FontAwesomeIcons.video,
+                              color: kThemeColor,
+                            ),
+                            title: Text(snapShotdata[index]['title'],
+                                style: TextStyle(fontSize: 17.0)),
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return Videos(
+                                      link: snapShotdata[index]['link']);
+                                },
+                              ));
+                            }),
+                        Divider(color: kThemeColor)
+                      ],
+                    );
+                  },
+                )));
   }
 }

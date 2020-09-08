@@ -144,6 +144,7 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
                     child: Container(
+                      padding: EdgeInsets.all(5),
                       child: SingleChildScrollView(
                         child: Column(
                           children: <Widget>[

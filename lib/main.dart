@@ -3,13 +3,13 @@ import 'package:digishala/aboutUs/admission.dart';
 import 'package:digishala/aboutUs/policy.dart';
 import 'package:digishala/aboutUs/terms.dart';
 import 'package:digishala/homepage.dart';
-import 'package:digishala/student/broadCast.dart';
-import 'package:digishala/student/chats.dart';
+import 'package:digishala/messaging/broadCast.dart';
+import 'package:digishala/messaging/chats.dart';
 import 'package:digishala/loginPage.dart';
 import 'package:digishala/student/stuZone.dart';
-import 'package:digishala/student/videos.dart';
+import 'package:digishala/student/videoPlayer.dart';
 import 'package:flutter/material.dart';
-import 'package:digishala/student/landingPage.dart';
+import 'package:digishala/landingPage.dart';
 
 void main() => runApp(MyApp());
 

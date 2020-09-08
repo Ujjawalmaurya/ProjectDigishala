@@ -1,7 +1,7 @@
 import 'package:digishala/aboutUs/aboutUs.dart';
 import 'package:digishala/homepage.dart';
-import 'package:digishala/student/broadCast.dart';
-import 'package:digishala/student/chats.dart';
+import 'package:digishala/messaging/broadCast.dart';
+import 'package:digishala/messaging/chats.dart';
 import 'package:digishala/student/docsList.dart';
 import 'package:digishala/student/videoList.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -13,6 +13,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:digishala/CustomWidgets/subjectContainer.dart';
+import 'package:digishala/CustomWidgets/drawerHeader.dart';
 
 class StudentZone extends StatefulWidget {
   static const String id = 'stuZone';
@@ -143,7 +145,7 @@ class _StudentZoneState extends State<StudentZone> {
               backgroundColor: kThemeColor, //value is in constants file
               title: Text("Subjects",
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.07,
+                      fontSize: MediaQuery.of(context).size.width * 0.08,
                       fontWeight: FontWeight.bold)),
               titleSpacing: 2.5,
               centerTitle: true,
@@ -151,61 +153,7 @@ class _StudentZoneState extends State<StudentZone> {
             drawer: Drawer(
               child: ListView(
                 children: <Widget>[
-                  DrawerHeader(
-                      decoration: BoxDecoration(color: kThemeColor),
-                      child: Row(children: [
-                        CircleAvatar(
-                            radius: MediaQuery.of(context).size.width * 0.13,
-                            child: Image(
-                              image: AssetImage('assets/mascot.png'),
-                            )),
-                        Column(children: [
-                          Text('Navodaya',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          46,
-                                  letterSpacing:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          5,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.amberAccent)),
-                          Text('Children\'s',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          46,
-                                  letterSpacing:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          5,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.amberAccent)),
-                          Text('Academy',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          46,
-                                  letterSpacing:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          5,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.amberAccent)),
-                          Text('DigiShala',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          30,
-                                  letterSpacing:
-                                      MediaQuery.of(context).size.aspectRatio *
-                                          7.5,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white)),
-                        ])
-                      ])),
+                  NCADrawerHeader(),
                   ListTile(
                     title: Text("Subjects"),
                     leading: FaIcon(
@@ -411,48 +359,5 @@ class _StudentZoneState extends State<StudentZone> {
               ),
             ),
           );
-  }
-}
-
-////================
-///custom widget ===
-////================
-class SubjectContainer extends StatelessWidget {
-  SubjectContainer({
-    @required this.title,
-    @required this.onPressed,
-    // this.highlightColour,
-    @required this.color,
-  });
-
-  final String title;
-  final Function onPressed;
-  final Color color;
-  // final Color highlightColour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.all(5.0),
-        child: RaisedButton(
-          elevation: 30.0,
-          highlightColor: Colors.white10,
-          padding: EdgeInsets.fromLTRB(5, 65, 5, 65),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          onPressed: onPressed,
-          child: Text(
-            title,
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.aspectRatio * 45,
-                color: Colors.white,
-                fontWeight: FontWeight.w700),
-          ),
-          color: color,
-        ),
-      ),
-    );
   }
 }
