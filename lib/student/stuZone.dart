@@ -28,9 +28,16 @@ class _StudentZoneState extends State<StudentZone> {
   String studentClass;
   String studentEmail;
   FirebaseUser loggedInUser;
-  signOut() {
-    Navigator.pushNamedAndRemoveUntil(context, HomePage.id, (route) => false);
-    FirebaseAuth.instance.signOut();
+  signOut() async {
+    setState(() {
+      isLoading = 'true';
+    });
+    await FirebaseAuth.instance.signOut();
+    setState(() {
+      isLoading = 'false';
+    });
+    await Navigator.pushNamedAndRemoveUntil(
+        context, HomePage.id, (route) => false);
   }
 
   studentClassGetter() async {

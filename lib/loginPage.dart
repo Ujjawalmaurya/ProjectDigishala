@@ -53,14 +53,14 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
     final user = await FirebaseAuth.instance.currentUser();
     final dbInstance = FirebaseDatabase.instance.reference();
-    dbInstance.child("deviceData").child(user.uid).push().set({
+    await dbInstance.child("deviceData").child(user.uid).push().set({
       "LoggedDevice": androidInfo.model.toString(),
       "email": user.email,
     });
     setState(() {
       isLoading = 'false';
     });
-    Navigator.pushNamedAndRemoveUntil(
+    await Navigator.pushNamedAndRemoveUntil(
         context, StudentZone.id, (route) => false);
   }
 
