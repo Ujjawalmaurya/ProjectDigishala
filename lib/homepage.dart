@@ -3,6 +3,7 @@ import 'package:digishala/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:flutter/services.dart';
+import 'dart:math';
 
 class HomePage extends StatefulWidget {
   static const String id = 'HomePage';
@@ -21,6 +22,9 @@ class _HomePageState extends State<HomePage> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }
+
+  // Random random = ;
+  int randomNo = Random().nextInt(10);
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +49,37 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                           children: <Widget>[
                             Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/asset2.jpg'))),
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.9,
-                                    height: MediaQuery.of(context).size.width *
-                                        0.9)),
+                              padding: EdgeInsets.all(8.0),
+                              child: randomNo == 1 ||
+                                      randomNo == 4 ||
+                                      randomNo == 7 ||
+                                      randomNo == 9
+                                  ? Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/asset2.jpg'))),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.9,
+                                      height: MediaQuery.of(context).size.width *
+                                          0.9)
+                                  : randomNo == 2 ||
+                                          randomNo == 5 ||
+                                          randomNo == 8
+                                      ? Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/asset2.1.jpg'))),
+                                          width: MediaQuery.of(context).size.width *
+                                              0.9,
+                                          height: MediaQuery.of(context).size.width * 0.75)
+                                      : Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), image: DecorationImage(image: AssetImage('assets/asset2.2.jpg'))), width: MediaQuery.of(context).size.width * 0.9, height: MediaQuery.of(context).size.width * 0.7),
+                            ),
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.06),
