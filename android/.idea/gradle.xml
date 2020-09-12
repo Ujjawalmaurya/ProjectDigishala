@@ -11,15 +11,28 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.13.7/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.1.1+2/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.16.1/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.1.3+1/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.5/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-4.0.0+4/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.1/android" />
-            <option value="$USER_HOME$/Sdks_Collection/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.9.1+1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.13.7/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.1.1+2/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/device_info-0.4.2+7/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.16.1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.1.3+1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.5/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-3.1.6/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-3.1.6/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-4.0.0+4/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-7.0.4/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.9.1+1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.8/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-0.0.2+1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+10/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.5.1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_linux-0.0.1+1/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-0.0.1+7/android" />
+            <option value="$USER_HOME$/sdk_env/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-0.1.3/android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
