@@ -17,7 +17,7 @@ class StudentLoginScreen extends StatefulWidget {
 class _StudentLoginScreenState extends State<StudentLoginScreen> {
   GlobalKey<FormState> _key = new GlobalKey();
   FirebaseAuth _auth = FirebaseAuth.instance;
-  FirebaseUser user;
+  User user;
   bool _autovalidate = false;
   String isLoading = 'false';
 
@@ -25,18 +25,21 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
   String errorMsg;
 
   //SignIn with email Fxn
-  signIn() async {
+  Future<void> signIn() async {
     setState(() {
       isLoading = 'true';
     });
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: this.email, password: this.pass);
+      UserCredential userCredential = await _auth
+          .signInWithEmailAndPassword(email: this.email, password: this.pass)
+          .whenComplete(() {
+        setState(() {
+          isLoading = 'false';
+        });
+      });
 
-      final FirebaseUser user = result.user;
-      print(user);
+      final User user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        //Navigation
         writeDeviceInfo();
       }
     } catch (e) {
@@ -48,10 +51,10 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
     }
   }
 
-  writeDeviceInfo() async {
+  Future<void> writeDeviceInfo() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    final user = await FirebaseAuth.instance.currentUser();
+    final user = FirebaseAuth.instance.currentUser;
     final dbInstance = FirebaseDatabase.instance.reference();
     await dbInstance.child("deviceData").child(user.uid).push().set({
       "LoggedDevice": androidInfo.model.toString(),
@@ -60,8 +63,6 @@ class _StudentLoginScreenState extends State<StudentLoginScreen> {
     setState(() {
       isLoading = 'false';
     });
-    await Navigator.pushNamedAndRemoveUntil(
-        context, StudentZone.id, (route) => false);
   }
 
   errorDialog() {

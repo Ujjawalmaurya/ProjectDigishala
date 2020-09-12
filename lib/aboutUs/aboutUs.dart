@@ -4,7 +4,6 @@ import 'package:digishala/constants.dart';
 import 'package:digishala/student/stuZone.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:digishala/CustomWidgets/drawerHeader.dart';
 
 class AboutUs extends StatefulWidget {
   static const String id = 'AboutUs';
@@ -20,7 +19,6 @@ class _AboutUsState extends State<AboutUs> {
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
-              NCADrawerHeader(),
               ListTile(
                   title: Text("About us"),
                   // leading:

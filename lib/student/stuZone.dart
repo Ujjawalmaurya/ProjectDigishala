@@ -1,5 +1,4 @@
 import 'package:digishala/aboutUs/aboutUs.dart';
-import 'package:digishala/homepage.dart';
 import 'package:digishala/messaging/broadCast.dart';
 import 'package:digishala/messaging/chats.dart';
 import 'package:digishala/student/docsList.dart';
@@ -14,7 +13,6 @@ import '../constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:digishala/CustomWidgets/subjectContainer.dart';
-import 'package:digishala/CustomWidgets/drawerHeader.dart';
 
 class StudentZone extends StatefulWidget {
   static const String id = 'stuZone';
@@ -27,8 +25,8 @@ class _StudentZoneState extends State<StudentZone> {
   String isLoading = "false";
   String studentClass;
   String studentEmail;
-  FirebaseUser loggedInUser;
-  signOut() async {
+  User loggedInUser;
+  Future<void> signOut() async {
     setState(() {
       isLoading = 'true';
     });
@@ -36,8 +34,6 @@ class _StudentZoneState extends State<StudentZone> {
     setState(() {
       isLoading = 'false';
     });
-    await Navigator.pushNamedAndRemoveUntil(
-        context, HomePage.id, (route) => false);
   }
 
   studentClassGetter() async {
@@ -46,7 +42,7 @@ class _StudentZoneState extends State<StudentZone> {
     });
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final FirebaseAuth auth = FirebaseAuth.instance;
-    final FirebaseUser user = await auth.currentUser();
+    final User user = auth.currentUser;
     setState(() {
       studentEmail = user.email.toString();
     });
@@ -54,7 +50,6 @@ class _StudentZoneState extends State<StudentZone> {
 
     final db =
         FirebaseDatabase.instance.reference().child("studentInfos").child(uid);
-
     db.onValue.listen((event) {
       var values = event.snapshot;
 
@@ -160,11 +155,11 @@ class _StudentZoneState extends State<StudentZone> {
             drawer: Drawer(
               child: ListView(
                 children: <Widget>[
-                  NCADrawerHeader(),
                   ListTile(
-                    title: Text("Subjects"),
+                    title: Text("Logged in as "),
+                    subtitle: Text(studentEmail),
                     leading: FaIcon(
-                      Icons.subject,
+                      Icons.email,
                       color: kThemeColor,
                     ),
                     onTap: () {
@@ -172,10 +167,9 @@ class _StudentZoneState extends State<StudentZone> {
                     },
                   ),
                   ListTile(
-                    title: Text("Logged in as "),
-                    subtitle: Text(studentEmail),
+                    title: Text("Subjects"),
                     leading: FaIcon(
-                      Icons.email,
+                      Icons.subject,
                       color: kThemeColor,
                     ),
                     onTap: () {

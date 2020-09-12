@@ -16,9 +16,9 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final clearMessage = TextEditingController();
-  final _firestore = Firestore.instance;
+  final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-  FirebaseUser loggedInUser;
+  User loggedInUser;
   String messageText;
   String currentClass;
   @override
@@ -27,9 +27,9 @@ class _ChatScreenState extends State<ChatScreen> {
     getCurrentUser();
   }
 
-  void getCurrentUser() async {
+  Future<void> getCurrentUser() async {
     try {
-      final user = await _auth.currentUser();
+      final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
         print(loggedInUser.email);
@@ -76,10 +76,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   final messages = snapshot.data.documents.reversed;
                   List<Bubble> messageWidgets = [];
                   for (var message in messages) {
-                    final messageText = message.data['text'];
-                    final messageSender = message.data['sender'];
-                    final timeOfMsg = message.data['timeOfMsg'];
-                    final dateOfMsg = message.data['dateOfMsg'];
+                    final messageText = message.data()['text'];
+                    final messageSender = message.data()['sender'];
+                    final timeOfMsg = message.data()['timeOfMsg'];
+                    final dateOfMsg = message.data()['dateOfMsg'];
                     final currentUser = loggedInUser.email;
                     final messageWidget = Bubble(
                       sender: messageSender,
