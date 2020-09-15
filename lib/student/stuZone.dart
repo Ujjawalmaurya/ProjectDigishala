@@ -139,33 +139,34 @@ class _StudentZoneState extends State<StudentZone> {
             })))
         : Scaffold(
             appBar: AppBar(
-              actions: <Widget>[
-                Image(
-                  image: AssetImage('assets/mascot.png'),
-                ),
-              ],
-              backgroundColor: kThemeColor, //value is in constants file
-              title: Text("Subjects",
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.08,
-                      fontWeight: FontWeight.bold)),
-              titleSpacing: 2.5,
-              centerTitle: true,
-            ),
+                actions: <Widget>[
+                  Image(
+                    image: AssetImage('assets/mascot.png'),
+                  ),
+                ],
+                backgroundColor: kThemeColor, //value is in constants file
+                title: Text("Subjects",
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.08,
+                        fontWeight: FontWeight.bold)),
+                titleSpacing: 2.5,
+                centerTitle: true),
             drawer: Drawer(
               child: ListView(
                 children: <Widget>[
-                  ListTile(
-                    title: Text("Logged in as "),
-                    subtitle: Text(studentEmail),
-                    leading: FaIcon(
-                      Icons.email,
-                      color: kThemeColor,
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
+                  UserAccountsDrawerHeader(
+                      decoration: BoxDecoration(
+                        color: kThemeColor,
+                        // gradient: LinearGradient(
+                        // colors: [kThemeColor, Colors.amberAccent]),
+                      ),
+                      currentAccountPicture:
+                          Image(image: AssetImage('assets/mascot.png')),
+                      accountName: Text("Class ${studentClass}"),
+                      // onDetailsPressed: () {
+                      //   studentClassGetter();
+                      // },
+                      accountEmail: Text(studentEmail)),
                   ListTile(
                     title: Text("Subjects"),
                     leading: FaIcon(

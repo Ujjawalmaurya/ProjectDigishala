@@ -19,6 +19,19 @@ class _AboutUsState extends State<AboutUs> {
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
+              UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(
+                    color: kThemeColor,
+                    // gradient: LinearGradient(
+                    // colors: [kThemeColor, Colors.amberAccent]),
+                  ),
+                  currentAccountPicture:
+                      Image(image: AssetImage('assets/mascot.png')),
+                  accountName: Text("Navodaya Children Academy"),
+                  // onDetailsPressed: () {
+                  //   studentClassGetter();
+                  // },
+                  accountEmail: null),
               ListTile(
                   title: Text("About us"),
                   // leading:
